@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Школьная Пицца - СтикерПицца</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Lobster&family=Special+Elite&display=swap');
+
+  :root {
+    --red: #CC0000;
+    --yellow: #FFD700;
+    --cream: #FFF8DC;
+    --dark: #1a0a00;
+    --brown: #8B4513;
+    --orange: #FF6600;
+  }
+
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Special Elite', cursive;
+    background-color: var(--dark);
+    background-image: repeating-conic-gradient(#1a0a00 0% 25%, #2d1200 0% 50%);
+    background-size: 40px 40px;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  /* ===== REGISTRATION ===== */
+  #regOverlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, #2d0a00 0%, #000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .neon-sign {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FF6600, 0 0 80px #FF6600;
+    animation: flicker 3s infinite;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .neon-sign-red {
+    font-family: 'Lobster', cursive;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: #ff4444;
+    text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000, 0 0 40px #ff0000;
+    animation: flicker2 2s infinite;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FF6600, 0 0 80px #FF6600;
+    }
+    20%, 24%, 55% { text-shadow: none; color: #aa9900; }
+  }
+
+  @keyframes flicker2 {
+    0%, 29%, 31%, 100% {
+      text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000, 0 0 40px #ff0000;
+    }
+    30% { text-shadow: none; }
+  }
+
+  .reg-box {
+    background: linear-gradient(145deg, #8B0000, #4a0000);
+    border: 3px solid #FFD700;
+    border-radius: 20px;
+    padding: 30px 25px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 30px rgba(255,215,0,0.4), inset 0 0 30px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reg-box::before {
+    content: '🍕';
+    font-size: 5rem;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    opacity: 0.1;
+    transform: rotate(30deg);
+    pointer-events: none;
+  }
+
+  .reg-box h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 22px;
+    letter-spacing: 3px;
+  }
+
+  .reg-box input {
+    width: 100%;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border: 3px solid #FFD700;
+    border-radius: 12px;
+    background: #1a0a00;
+    color: #FFD700;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .reg-box input::placeholder { color: #aa7700; }
+
+  .reg-box input:focus {
+    border-color: #FF6600;
+    box-shadow: 0 0 15px rgba(255,102,0,0.5);
+  }
+
+  .btn-retro {
+    width: 100%;
+    padding: 17px;
+    background: linear-gradient(145deg, #FFD700, #FF6600);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: #1a0a00;
+    cursor: pointer;
+    transition: all 0.15s;
+    box-shadow: 0 6px 0 #8B4513, 0 8px 15px rgba(0,0,0,0.5);
+    position: relative;
+    top: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+  }
+
+  .btn-retro:active {
+    top: 4px;
+    box-shadow: 0 2px 0 #8B4513;
+  }
+
+  .error-msg {
+    color: #ff4444;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    min-height: 20px;
+  }
+
+  .stars-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  .star {
+    position: absolute;
+    color: #FFD700;
+    font-size: 1rem;
+    animation: twinkle 2s infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.8); }
+  }
+
+  /* ===== MAIN APP ===== */
+  #mainApp { display: none; min-height: 100vh; flex-direction: column; }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, #CC0000, #8B0000);
+    border-bottom: 4px solid #FFD700;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo-area {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  .logo-main {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(1rem, 4.5vw, 1.8rem);
+    color: #FFD700;
+    text-shadow: 2px 2px 0 #8B0000, 0 0 15px rgba(255,215,0,0.4);
+    line-height: 1;
+  }
+
+  .logo-sub {
+    font-family: 'Lobster', cursive;
+    font-size: clamp(0.6rem, 2.5vw, 0.85rem);
+    color: #FFD700;
+    opacity: 0.8;
+    letter-spacing: 1px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .user-badge {
+    background: rgba(0,0,0,0.4);
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    padding: 6px 12px;
+    color: #FFD700;
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .sticker-count-badge {
+    background: #FFD700;
+    color: #1a0a00;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+    font-family: 'Bebas Neue', cursive;
+    flex-shrink: 0;
+  }
+
+  .btn-prizes {
+    background: linear-gradient(145deg, #FFD700, #FF8C00);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 14px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    letter-spacing: 1px;
+    color: #1a0a00;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #8B6000;
+    transition: all 0.15s;
+    touch-action: manipulation;
+    white-space: nowrap;
+    -webkit-appearance: none;
+  }
+
+  .btn-prizes:active { transform: translateY(2px); box-shadow: 0 1px 0 #8B6000; }
+
+  .btn-logout {
+    background: transparent;
+    border: 2px solid rgba(255,215,0,0.5);
+    border-radius: 20px;
+    padding: 6px 10px;
+    color: #FFD700;
+    font-family: 'Special Elite', cursive;
+    cursor: pointer;
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    touch-action: manipulation;
+    white-space: nowrap;
+    -webkit-appearance: none;
+  }
+
+  .btn-logout:active { border-color: #FFD700; background: rgba(255,215,0,0.1); }
+
+  /* Sticker menu bar */
+  .sticker-menu-bar {
+    background: linear-gradient(135deg, #1a0a00, #2d1200);
+    border-bottom: 3px solid #FF6600;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sticker-menu-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    color: #FF6600;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255,102,0,0.5);
+    white-space: nowrap;
+  }
+
+  .sticker-menu-title span { color: #FFD700; }
+
+  /* Marquee */
+  .marquee-bar {
+    background: #CC0000;
+    border-top: 3px solid #FFD700;
+    border-bottom: 3px solid #FFD700;
+    padding: 7px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-text {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(0.75rem, 3vw, 1rem);
+    letter-spacing: 4px;
+    color: #FFD700;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* Main Content */
+  .main-content {
+    padding: 20px 12px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    color: #FFD700;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 0 #CC0000;
+  }
+
+  .section-subtitle {
+    font-family: 'Special Elite', cursive;
+    color: #FF6600;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: clamp(0.8rem, 3.5vw, 1rem);
+  }
+
+  /* Sticker Cards */
+  .stickers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: 480px) {
+    .stickers-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (min-width: 640px) {
+    .stickers-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .sticker-card {
+    background: linear-gradient(145deg, #CC0000, #8B0000);
+    border: 3px solid #FFD700;
+    border-radius: 18px;
+    padding: 22px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sticker-card:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+  }
+
+  .sticker-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse, rgba(255,215,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .sticker-icon {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 10px;
+    display: block;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .sticker-number {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: #FFD700;
+    display: block;
+    letter-spacing: 1px;
+  }
+
+  .sticker-hint {
+    font-size: clamp(0.6rem, 2.5vw, 0.72rem);
+    color: rgba(255,215,0,0.6);
+    margin-top: 6px;
+    display: block;
+  }
+
+  .slide-arrow {
+    font-size: 1rem;
+    color: #FFD700;
+    animation: slideAnim 1s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes slideAnim {
+    0% { transform: translateX(-4px); opacity: 0.5; }
+    50% { transform: translateX(4px); opacity: 1; }
+    100% { transform: translateX(-4px); opacity: 0.5; }
+  }
+
+  /* No stickers */
+  .no-stickers {
+    text-align: center;
+    padding: 50px 20px;
+    color: #aa7700;
+  }
+
+  .no-stickers-icon { font-size: 4rem; margin-bottom: 15px; display: block; }
+
+  .no-stickers h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.8rem;
+    color: #FFD700;
+    margin-bottom: 8px;
+  }
+
+  .no-stickers p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Retro divider */
+  .retro-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0;
+  }
+
+  .retro-divider::before,
+  .retro-divider::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  }
+
+  .retro-divider span { font-size: 1.3rem; }
+
+  /* Checkered footer */
+  .checkered-footer {
+    height: 25px;
+    background: repeating-conic-gradient(#CC0000 0% 25%, #FFD700 0% 50%) 0 0 / 25px 25px;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* ===== SWIPE OVERLAY ===== */
+  #swipeOverlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #1a0a00, #2d0000);
+    z-index: 8000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 20px;
+    touch-action: none;
+  }
+
+  .swipe-instruction {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    color: #FFD700;
+    letter-spacing: 4px;
+    text-align: center;
+    animation: pulse 1.5s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255,215,0,0.5);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(0.97); }
+  }
+
+  .swipe-sub {
+    font-family: 'Special Elite', cursive;
+    color: #FF6600;
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .swipe-visual {
+    font-size: clamp(5rem, 20vw, 8rem);
+    margin: 25px;
+    animation: swipeAnim 2s ease-in-out infinite;
+    display: block;
+  }
+
+  @keyframes swipeAnim {
+    0% { transform: translateX(-50px) rotate(-10deg); opacity: 0.4; }
+    50% { transform: translateX(50px) rotate(10deg); opacity: 1; }
+    100% { transform: translateX(-50px) rotate(-10deg); opacity: 0.4; }
+  }
+
+  .swipe-progress-bar {
+    width: 85%;
+    max-width: 380px;
+    height: 22px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 11px;
+    border: 2px solid #FFD700;
+    overflow: hidden;
+    margin-top: 25px;
+  }
+
+  .swipe-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FFD700, #FF6600);
+    width: 0%;
+    transition: width 0.08s;
+    border-radius: 9px;
+  }
+
+  .swipe-cancel {
+    margin-top: 25px;
+    background: transparent;
+    border: 2px solid rgba(255,215,0,0.4);
+    border-radius: 25px;
+    padding: 12px 30px;
+    color: rgba(255,215,0,0.7);
+    font-family: 'Special Elite', cursive;
+    cursor: pointer;
+    font-size: 1rem;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+  }
+
+  .swipe-cancel:active { border-color: #FFD700; color: #FFD700; }
+
+  /* ===== WIN OVERLAY ===== */
+  #winOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 20px;
+  }
+
+  .win-box {
+    background: linear-gradient(145deg, #8B0000, #4a0000);
+    border: 5px solid #FFD700;
+    border-radius: 25px;
+    padding: clamp(25px, 6vw, 50px) clamp(20px, 5vw, 40px);
+    text-align: center;
+    max-width: 460px;
+    width: 100%;
+    position: relative;
+    animation: winPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 50px rgba(255,215,0,0.4), 0 25px 50px rgba(0,0,0,0.8);
+  }
+
+  @keyframes winPop {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  .win-emoji {
+    font-size: clamp(4rem, 15vw, 6rem);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .win-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(1.6rem, 7vw, 2.5rem);
+    color: #FFD700;
+    text-shadow: 0 0 20px rgba(255,215,0,0.6);
+    margin-bottom: 10px;
+  }
+
+  .win-prize {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    color: #FF6600;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+    padding: 14px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 14px;
+    border: 2px dashed #FF6600;
+    line-height: 1.3;
+  }
+
+  .btn-close-win {
+    background: linear-gradient(145deg, #FFD700, #FF6600);
+    border: none;
+    border-radius: 25px;
+    padding: 15px 35px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    letter-spacing: 3px;
+    color: #1a0a00;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #8B6000;
+    transition: all 0.15s;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    width: 100%;
+  }
+
+  .btn-close-win:active { transform: translateY(3px); box-shadow: 0 2px 0 #8B6000; }
+
+  /* Confetti */
+  .confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 8500;
+    overflow: hidden;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    top: -20px;
+    animation: confettiFall linear forwards;
+    border-radius: 2px;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== PRIZES MODAL ===== */
+  #prizesModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 7000;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .prizes-box {
+    background: linear-gradient(145deg, #1a0a00, #2d1200);
+    border: 3px solid #FFD700;
+    border-bottom: none;
+    border-radius: 25px 25px 0 0;
+    padding: 25px 20px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 -10px 40px rgba(255,215,0,0.2);
+    animation: slideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @keyframes slideUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+  }
+
+  .prizes-box::-webkit-scrollbar { width: 6px; }
+  .prizes-box::-webkit-scrollbar-track { background: #1a0a00; border-radius: 3px; }
+  .prizes-box::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 3px; }
+
+  .modal-drag-handle {
+    width: 50px;
+    height: 5px;
+    background: rgba(255,215,0,0.3);
+    border-radius: 3px;
+    margin: 0 auto 20px;
+  }
+
+  .prizes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .prizes-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    color: #FFD700;
+    letter-spacing: 3px;
+  }
+
+  .btn-close-modal {
+    background: rgba(255,215,0,0.1);
+    border: 2px solid #FFD700;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #FFD700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+  }
+
+  .btn-close-modal:active { background: rgba(255,215,0,0.25); }
+
+  .prizes-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    background: rgba(255,215,0,0.07);
+    border: 2px solid rgba(255,215,0,0.25);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    color: #FFD700;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    color: #aa7700;
+  }
+
+  .prizes-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .prize-item {
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,215,0,0.18);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .prize-emoji { font-size: clamp(1.6rem, 6vw, 2rem); flex-shrink: 0; }
+
+  .prize-info { flex: 1; min-width: 0; }
+
+  .prize-name {
+    font-family: 'Special Elite', cursive;
+    color: #FFD700;
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+    display: block;
+    margin-bottom: 3px;
+    word-break: break-word;
+  }
+
+  .prize-time {
+    font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+    color: #aa7700;
+  }
+
+  .no-prizes {
+    text-align: center;
+    padding: 35px;
+    color: #aa7700;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* ===== ADMIN PANEL ===== */
+  #adminPanel {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 7500;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .admin-box {
+    background: linear-gradient(145deg, #0a0a1a, #1a1a2d);
+    border: 3px solid #00FFFF;
+    border-bottom: none;
+    border-radius: 25px 25px 0 0;
+    padding: 25px 20px;
+    width: 100%;
+    max-width: 700px;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 -10px 40px rgba(0,255,255,0.2);
+    animation: slideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    color: #00FFFF;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0,255,255,0.5);
+  }
+
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .btn-close-admin {
+    background: rgba(0,255,255,0.1);
+    border: 2px solid #00FFFF;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #00FFFF;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+  }
+
+  .admin-desc {
+    color: rgba(0,255,255,0.55);
+    margin-bottom: 18px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .admin-users-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .admin-user-item {
+    background: rgba(0,255,255,0.04);
+    border: 2px solid rgba(0,255,255,0.18);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .admin-user-info { flex: 1; min-width: 0; }
+
+  .admin-user-name {
+    font-family: 'Special Elite', cursive;
+    color: #00FFFF;
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .admin-user-stickers {
+    font-size: clamp(0.68rem, 2.5vw, 0.8rem);
+    color: rgba(0,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  .btn-give-sticker {
+    background: linear-gradient(145deg, #00FFFF, #0088aa);
+    border: none;
+    border-radius: 20px;
+    padding: 12px 18px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    letter-spacing: 1px;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #005566;
+    transition: all 0.15s;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .btn-give-sticker:active { transform: translateY(3px); box-shadow: 0 1px 0 #005566; }
+
+  .btn-admin-open {
+    background: linear-gradient(145deg, #00FFFF, #0088aa);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 14px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    letter-spacing: 1px;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #005566;
+    transition: all 0.15s;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    white-space: nowrap;
+  }
+
+  .btn-admin-open:active { transform: translateY(2px); box-shadow: 0 1px 0 #005566; }
+
+  .admin-empty {
+    color: rgba(0,255,255,0.35);
+    text-align: center;
+    padding: 25px;
+    font-size: 0.9rem;
+  }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: linear-gradient(145deg, #1a0a00, #2d1200);
+    border: 2px solid #FFD700;
+    border-radius: 25px;
+    padding: 14px 25px;
+    color: #FFD700;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    white-space: nowrap;
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ===== SAFE AREA ===== */
+  .safe-bottom { height: env(safe-area-inset-bottom, 0px); }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars-bg" id="starsBg"></div>
+
+<!-- ===== REGISTRATION ===== -->
+<div id="regOverlay">
+  <div class="neon-sign">🍕 ШКОЛЬНАЯ ПИЦЦА 🍕</div>
+  <div class="neon-sign-red">★ ДОБРО ПОЖАЛОВАТЬ ★</div>
+  <div class="reg-box">
+    <h2>🎉 ВОЙТИ В КАФЕ</h2>
+    <input type="text" id="regName" placeholder="✏️ Ваше имя..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" />
+    <input type="password" id="regPass" placeholder="🔑 Пароль..." autocomplete="off" />
+    <button class="btn-retro" onclick="handleLogin()">ВОЙТИ! 🚀</button>
+    <div class="error-msg" id="errorMsg"></div>
+    <div style="margin-top:14px; text-align:center; color:#aa7700; font-size:0.82rem;">
+      ★ Зарегистрируйтесь у менеджера ★
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="mainApp">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <div class="logo-main">🍕 Пиццерия</div>
+      <div class="logo-sub">✦ ШКОЛЬНАЯ ПИЦЦА ✦</div>
+    </div>
+    <div class="header-right">
+      <div class="user-badge">
+        👤 <span id="headerUsername">Гость</span>
+        <div class="sticker-count-badge" id="headerStickerCount">0</div>
+      </div>
+      <button class="btn-prizes" onclick="openPrizes()">🏆 ПРИЗЫ</button>
+      <div id="adminBtnContainer"></div>
+      <button class="btn-logout" onclick="handleLogout()">↩</button>
+    </div>
+  </header>
+
+  <!-- Sticker menu bar -->
+  <div class="sticker-menu-bar">
+    <span class="sticker-menu-title">🎴 <span>СТИКЕР</span>ПИЦЦА</span>
+    <span style="color:rgba(255,215,0,0.45); font-size:clamp(0.65rem,2.5vw,0.85rem); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+      — Открой и выиграй!
+    </span>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee-bar">
+    <span class="marquee-text">
+      🍕 ШКОЛЬНАЯ ПИЦЦА ★ ОТКРЫВАЙ СТИКЕРЫ ★ ВЫИГРЫВАЙ ПРИЗЫ ★ 1 МИЛЛИОН РУБЛЕЙ ★ РОБОТ ПЫЛЕСОС ★ БЕСПЛАТНАЯ ПИЦЦА ★ ТЕЛЕВИЗОР С ТИМУРОМ ★ 🍕
+    </span>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div class="section-title">МОИ СТИКЕРЫ</div>
+    <div class="section-subtitle">
+      Доступно: <span id="availableStickers">0</span> стикеров
+    </div>
+
+    <div id="stickersGrid" class="stickers-grid"></div>
+
+    <div id="noStickersMsg" class="no-stickers" style="display:none;">
+      <span class="no-stickers-icon">🎴</span>
+      <h3>НЕТ СТИКЕРОВ</h3>
+      <p>Получите стикеры у менеджера пиццерии!</p>
+    </div>
+
+    <div class="retro-divider"><span>🍕</span></div>
+
+    <div style="text-align:center; color:rgba(255,215,0,0.25); font-size:clamp(0.7rem,2.5vw,0.85rem); padding-bottom:10px; line-height:1.7;">
+      <p>★ Пиццерия "Школьная Пицца" ★</p>
+      <p>Авто-кафе ★ Открытие стикеров ★ С любовью из 60-х 🎸</p>
+    </div>
+  </div>
+
+  <div class="checkered-footer"></div>
+  <div class="safe-bottom"></div>
+</div>
+
+<!-- ===== SWIPE OVERLAY ===== -->
+<div id="swipeOverlay">
+  <div class="swipe-instruction">ПРОВЕДИ ПО ЭКРАНУ!</div>
+  <div class="swipe-sub">← сделай полный слайд →</div>
+  <span class="swipe-visual">🎴</span>
+  <div class="swipe-progress-bar">
+    <div class="swipe-progress-fill" id="swipeProgress"></div>
+  </div>
+  <button class="swipe-cancel" onclick="cancelSwipe()">Отмена ✕</button>
+</div>
+
+<!-- ===== WIN OVERLAY ===== -->
+<div id="winOverlay">
+  <div class="confetti-container" id="confettiContainer"></div>
+  <div class="win-box">
+    <span class="win-emoji" id="winEmoji">🎉</span>
+    <div class="win-title">ПОЗДРАВЛЯЕМ!</div>
+    <div class="win-prize" id="winPrizeText">Приз!</div>
+    <button class="btn-close-win" onclick="closeWin()">ЗАБРАТЬ ПРИЗ! 🎁</button>
+  </div>
+</div>
+
+<!-- ===== PRIZES MODAL ===== -->
+<div id="prizesModal" onclick="handleModalBgClick(event,'prizesModal',closePrizes)">
+  <div class="prizes-box">
+    <div class="modal-drag-handle"></div>
+    <div class="prizes-header">
+      <div class="prizes-title">🏆 МОИ ПРИЗЫ</div>
+      <button class="btn-close-modal" onclick="closePrizes()">✕</button>
+    </div>
+    <div class="prizes-stats">
+      <div class="stat-card">
+        <span class="stat-number" id="totalPrizesCount">0</span>
+        <span class="stat-label">Всего выигрышей</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="totalStickersOpened">0</span>
+        <span class="stat-label">Стикеров открыто</span>
+      </div>
+    </div>
+    <div class="prizes-list" id="prizesList">
+      <div class="no-prizes">🎴 Ещё нет выигрышей<br><small>Открывайте стикеры!</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div id="adminPanel" onclick="handleModalBgClick(event,'adminPanel',closeAdmin)">
+  <div class="admin-box">
+    <div class="modal-drag-handle" style="background:rgba(0,255,255,0.2);"></div>
+    <div class="admin-header">
+      <div class="admin-title">🔧 ПАНЕЛЬ АДМИНА</div>
+      <button class="btn-close-admin" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="admin-desc">Выдавайте стикеры пользователям в реальном времени</div>
+    <div class="admin-users-list" id="adminUsersList">
+      <div class="admin-empty">Нет зарегистрированных пользователей</div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// CONSTANTS
+// ============================================================
+
+const ADMIN = { username: 'Vladimir', password: '67timyr' };
+
+const PRIZES = [
+  { id: 'nothing',    name: 'Ничего не выиграл',                     emoji: '😞', weight: 99 },
+  { id: 'pizza',      name: 'Бесплатная 1 пицца',                    emoji: '🍕', weight: 95 },
+  { id: 'robot',      name: 'Робот пылесос ПУСОХОС',                 emoji: '🤖', weight: 55 },
+  { id: 'toothpaste', name: 'Зубная паста со вкусом школьной пиццы', emoji: '🦷', weight: 45 },
+  { id: 'million',    name: '1 Миллион Рублей',                      emoji: '💰', weight: 1  },
+  { id: 'tv',         name: 'Телевизор с Тимуром Ассистентом',       emoji: '📺', weight: 33 },
+];
+
+// ============================================================
+// STATE
+// ============================================================
+
+let state = {
+  currentUser: null,
+  users: {},
+};
+
+// ============================================================
+// STORAGE
+// ============================================================
+
+function saveState() {
+  try { localStorage.setItem('pizzaState_v2', JSON.stringify(state.users)); } catch(e) {}
+}
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem('pizzaState_v2');
+    if (saved) state.users = JSON.parse(saved);
+  } catch(e) { state.users = {}; }
+}
+
+function getUser(username) { return state.users[username] || null; }
+
+function createUser(username, password) {
+  if (!state.users[username]) {
+    state.users[username] = { password, stickers: 0, prizes: [], stickersOpened: 0 };
+    saveState();
+  }
+}
+
+function getCurrentUserData() { return state.users[state.currentUser] || null; }
+
+// ============================================================
+// STARS
+// ============================================================
+
+(function createStars() {
+  const container = document.getElementById('starsBg');
+  const icons = ['⭐','🌟','✨','★','☆'];
+  for (let i = 0; i < 20; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.textContent = icons[Math.floor(Math.random() * icons.length)];
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    star.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+    star.style.opacity = 0.15 + Math.random() * 0.25;
+    star.style.fontSize = (0.7 + Math.random() * 0.8) + 'rem';
+    container.appendChild(star);
+  }
+})();
+
+// ============================================================
+// LOGIN
+// ============================================================
+
+function handleLogin() {
+  const name = document.getElementById('regName').value.trim();
+  const pass = document.getElementById('regPass').value.trim();
+  const errEl = document.getElementById('errorMsg');
+
+  if (!name || !pass) { errEl.textContent = '⚠️ Введите имя и пароль!'; return; }
+
+  if (name === ADMIN.username && pass === ADMIN.password) {
+    state.currentUser = ADMIN.username;
+    if (!state.users[ADMIN.username]) createUser(ADMIN.username, ADMIN.password);
+    errEl.textContent = '';
+    enterApp(true);
+    return;
+  }
+
+  const existing = getUser(name);
+  if (existing) {
+    if (existing.password !== pass) { errEl.textContent = '❌ Неверный пароль!'; return; }
+    state.currentUser = name;
+  } else {
+    createUser(name, pass);
+    state.currentUser = name;
+  }
+
+  errEl.textContent = '';
+  enterApp(false);
+}
+
+document.getElementById('regName').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('regPass').focus();
+});
+document.getElementById('regPass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') handleLogin();
+});
+
+function enterApp(isAdmin) {
+  document.getElementById('regOverlay').style.display = 'none';
+  document.getElementById('starsBg').style.display = 'none';
+  const app = document.getElementById('mainApp');
+  app.style.display = 'flex';
+  document.getElementById('headerUsername').textContent = state.currentUser;
+
+  if (isAdmin) {
+    document.getElementById('adminBtnContainer').innerHTML =
+      `<button class="btn-admin-open" onclick="openAdmin()">🔧 АДМИН</button>`;
+  } else {
+    document.getElementById('adminBtnContainer').innerHTML = '';
+  }
+
+  updateUI();
+}
+
+function handleLogout() {
+  state.currentUser = null;
+  document.getElementById('regOverlay').style.display = 'flex';
+  document.getElementById('starsBg').style.display = 'block';
+  document.getElementById('mainApp').style.display = 'none';
+  document.getElementById('regName').value = '';
+  document.getElementById('regPass').value = '';
+  document.getElementById('errorMsg').textContent = '';
+  document.getElementById('adminBtnContainer').innerHTML = '';
+  closeAllModals();
+}
+
+// ============================================================
+// UI UPDATE
+// ============================================================
+
+function updateUI() {
+  const user = getCurrentUserData();
+  if (!user) return;
+  document.getElementById('availableStickers').textContent = user.stickers;
+  document.getElementById('headerStickerCount').textContent = user.stickers;
+  renderStickers(user.stickers);
+}
+
+function renderStickers(count) {
+  const grid = document.getElementById('stickersGrid');
+  const noMsg = document.getElementById('noStickersMsg');
+  grid.innerHTML = '';
+
+  if (count === 0) {
+    noMsg.style.display = 'block';
+    return;
+  }
+
+  noMsg.style.display = 'none';
+
+  for (let i = 0; i < count; i++) {
+    const card = document.createElement('div');
+    card.className = 'sticker-card';
+    card.innerHTML = `
+      <span class="sticker-icon">🎴</span>
+      <span class="sticker-number">СТИКЕР #${i + 1}</span>
+      <span class="sticker-hint"><span class="slide-arrow">←→</span> проведи!</span>
+    `;
+
+    card.addEventListener('click', () => openSwipeOverlay(i));
+    card.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      openSwipeOverlay(i);
+    }, { passive: false });
+
+    grid.appendChild(card);
+  }
+}
+
+// ============================================================
+// SWIPE OVERLAY
+// ============================================================
+
+let swipeState = {
+  active: false,
+  startX: null,
+  startY: null,
+  completed: false,
+  stickerIndex: null,
+};
+
+function openSwipeOverlay(index) {
+  const user = getCurrentUserData();
+  if (!user || user.stickers === 0) return;
+
+  swipeState.active = true;
+  swipeState.stickerIndex = index;
+  swipeState.completed = false;
+  swipeState.startX = null;
+  swipeState.startY = null;
+
+  document.getElementById('swipeProgress').style.width = '0%';
+  document.getElementById('swipeOverlay').style.display = 'flex';
+}
+
+function cancelSwipe() {
+  swipeState.active = false;
+  swipeState.startX = null;
+  document.getElementById('swipeOverlay').style.display = 'none';
+}
+
+function getSwipeThreshold() { return window.innerWidth * 0.72; }
+
+// Touch events
+const swipeEl = document.getElementById('swipeOverlay');
+
+swipeEl.addEventListener('touchstart', function(e) {
+  if (!swipeState.active || swipeState.completed) return;
+  const touch = e.touches[0];
+  swipeState.startX = touch.clientX;
+  swipeState.startY = touch.clientY;
+}, { passive: true });
+
+swipeEl.addEventListener('touchmove', function(e) {
+  if (!swipeState.active || swipeState.startX === null || swipeState.completed) return;
+  e.preventDefault();
+
+  const touch = e.touches[0];
+  const dx = touch.clientX - swipeState.startX;
+  const dy = Math.abs(touch.clientY - swipeState.startY);
+
+  if (dy > 60 && Math.abs(dx) < dy) return;
+  if (dx < 0) { document.getElementById('swipeProgress').style.width = '0%'; return; }
+
+  const progress = Math.min((dx / getSwipeThreshold()) * 100, 100);
+  document.getElementById('swipeProgress').style.width = progress + '%';
+
+  if (progress >= 100) {
+    swipeState.completed = true;
+    onSwipeComplete();
+  }
+}, { passive: false });
+
+swipeEl.addEventListener('touchend', function() {
+  if (!swipeState.active || swipeState.completed) return;
+  const prog = parseFloat(document.getElementById('swipeProgress').style.width) || 0;
+  if (prog < 100) {
+    document.getElementById('swipeProgress').style.width = '0%';
+    swipeState.startX = null;
+    swipeState.startY = null;
+  }
+}, { passive: true });
+
+// Mouse events (desktop)
+swipeEl.addEventListener('mousedown', function(e) {
+  if (!swipeState.active || swipeState.completed) return;
+  swipeState.startX = e.clientX;
+  swipeState.startY = e.clientY;
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (!swipeState.active || swipeState.startX === null || swipeState.completed) return;
+  const dx = e.clientX - swipeState.startX;
+  if (dx < 0) { document.getElementById('swipeProgress').style.width = '0%'; return; }
+  const progress = Math.min((dx / getSwipeThreshold()) * 100, 100);
+  document.getElementById('swipeProgress').style.width = progress + '%';
+  if (progress >= 100) { swipeState.completed = true; onSwipeComplete(); }
+});
+
+document.addEventListener('mouseup', function() {
+  if (!swipeState.active || swipeState.completed) return;
+  const prog = parseFloat(document.getElementById('swipeProgress').style.width) || 0;
+  if (prog < 100) {
+    document.getElementById('swipeProgress').style.width = '0%';
+    swipeState.startX = null;
+  }
+});
+
+function onSwipeComplete() {
+  setTimeout(() => {
+    document.getElementById('swipeOverlay').style.display = 'none';
+    revealPrize();
+  }, 250);
+}
+
+// ============================================================
+// PRIZE LOGIC
+// ============================================================
+
+function rollPrize() {
+  const total = PRIZES.reduce((a, p) => a + p.weight, 0);
+  let r = Math.random() * total;
+  for (const prize of PRIZES) {
+    if (r < prize.weight) return prize;
+    r -= prize.weight;
+  }
+  return PRIZES[0];
+}
+
+function revealPrize() {
+  const user = getCurrentUserData();
+  if (!user || user.stickers === 0) return;
+
+  const prize = rollPrize();
+  user.stickers -= 1;
+  user.stickersOpened = (user.stickersOpened || 0) + 1;
+  user.prizes = user.prizes || [];
+  user.prizes.push({
+    prizeId: prize.id,
+    prizeName: prize.name,
+    prizeEmoji: prize.emoji,
+    time: new Date().toLocaleString('ru-RU'),
+    timestamp: Date.now(),
+  });
+
+  saveState();
+  updateUI();
+  showWin(prize);
+}
+
+function showWin(prize) {
+  document.getElementById('winEmoji').textContent = prize.emoji;
+  document.getElementById('winPrizeText').textContent = prize.name;
+  document.getElementById('winOverlay').style.display = 'flex';
+  if (prize.id !== 'nothing') createConfetti();
+}
+
+function closeWin() {
+  document.getElementById('winOverlay').style.display = 'none';
+  document.getElementById('confettiContainer').innerHTML = '';
+}
+
+// ============================================================
+// CONFETTI
+// ============================================================
+
+function createConfetti() {
+  const container = document.getElementById('confettiContainer');
+  container.innerHTML = '';
+  const colors = ['#FFD700','#FF6600','#CC0000','#FF4444','#FF8C00','#ffffff','#FF69B4','#00FF88'];
+  for (let i = 0; i < 70; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    const size = 8 + Math.random() * 10;
+    piece.style.width = size + 'px';
+    piece.style.height = size + 'px';
+    piece.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
+    piece.style.animationDelay = Math.random() * 0.8 + 's';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    container.appendChild(piece);
+  }
+}
+
+// ============================================================
+// PRIZES MODAL
+// ============================================================
+
+function openPrizes() {
+  const user = getCurrentUserData();
+  if (!user) return;
+
+  const prizes = user.prizes || [];
+  document.getElementById('totalPrizesCount').textContent = prizes.length;
+  document.getElementById('totalStickersOpened').textContent = user.stickersOpened || 0;
+
+  const list = document.getElementById('prizesList');
+  if (prizes.length === 0) {
+    list.innerHTML = '<div class="no-prizes">🎴 Ещё нет выигрышей<br><small>Открывайте стикеры!</small></div>';
+  } else {
+    list.innerHTML = prizes.slice().reverse().map(p => `
+      <div class="prize-item">
+        <span class="prize-emoji">${p.prizeEmoji}</span>
+        <div class="prize-info">
+          <span class="prize-name">${p.prizeName}</span>
+          <span class="prize-time">🕐 ${p.time}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('prizesModal').style.display = 'flex';
+}
+
+function closePrizes() {
+  document.getElementById('prizesModal').style.display = 'none';
+}
+
+// ============================================================
+// ADMIN PANEL
+// ============================================================
+
+function openAdmin() {
+  if (state.currentUser !== ADMIN.username) return;
+  renderAdminUsers();
+  document.getElementById('adminPanel').style.display = 'flex';
+}
+
+function closeAdmin() {
+  document.getElementById('adminPanel').style.display = 'none';
+}
+
+function renderAdminUsers() {
+  const list = document.getElementById('adminUsersList');
+  const users = Object.entries(state.users).filter(([n]) => n !== ADMIN.username);
+
+  if (users.length === 0) {
+    list.innerHTML = '<div class="admin-empty">Нет зарегистрированных пользователей</div>';
+    return;
+  }
+
+  list.innerHTML = users.map(([name, data]) => `
+    <div class="admin-user-item" id="adminUser_${CSS.escape(name)}">
+      <div class="admin-user-info">
+        <span class="admin-user-name">👤 ${name}</span>
+        <span class="admin-user-stickers">
+          🎴 Стикеров: <b style="color:#00FFFF">${data.stickers}</b> &nbsp;|&nbsp;
+          🏆 Призов: <b style="color:#FFD700">${(data.prizes||[]).length}</b> &nbsp;|&nbsp;
+          📊 Открыто: <b style="color:#FF6600">${data.stickersOpened||0}</b>
+        </span>
+      </div>
+      <button class="btn-give-sticker" onclick="giveSticker('${name}')">+1 🎴</button>
+    </div>
+  `).join('');
+}
+
+function giveSticker(username) {
+  if (!state.users[username]) return;
+  state.users[username].stickers = (state.users[username].stickers || 0) + 1;
+  saveState();
+  renderAdminUsers();
+  if (state.currentUser === username) updateUI();
+  showToast(`✅ ${username} получил +1 стикер!`);
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+
+function handleModalBgClick(e, modalId, closeFn) {
+  if (e.target.id === modalId) closeFn();
+}
+
+function closeAllModals() {
+  closePrizes();
+  closeAdmin();
+  closeWin();
+  if (document.getElementById('swipeOverlay').style.display !== 'none') cancelSwipe();
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+
+let toastTimer;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ============================================================
+// REAL-TIME POLLING
+// ============================================================
+
+setInterval(() => {
+  if (!state.currentUser) return;
+  try {
+    const saved = localStorage.getItem('pizzaState_v2');
+    if (!saved) return;
+    const fresh = JSON.parse(saved);
+    const freshUser = fresh[state.currentUser];
+    const cur = getCurrentUserData();
+    if (!freshUser || !cur) return;
+    if (freshUser.stickers !== cur.stickers || freshUser.stickersOpened !== cur.stickersOpened) {
+      const diff = freshUser.stickers - cur.stickers;
+      state.users = fresh;
+      updateUI();
+      if (diff > 0) showToast(`🎴 Вы получили ${diff} новый стикер!`);
+    }
+  } catch(e) {}
+}, 2000);
+
+// ============================================================
+// PREVENT SCROLL ON SWIPE OVERLAY
+// ============================================================
+
+document.getElementById('swipeOverlay').addEventListener('touchmove', function(e) {
+  e.preventDefault();
+}, { passive: false });
+
+// ============================================================
+// INIT
+// ============================================================
+
+loadState();
+</script>
+</body>
+</html>
