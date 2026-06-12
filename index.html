@@ -10,16 +10,14 @@
   :root {
     --red: #CC0000;
     --yellow: #FFD700;
-    --cream: #FFF8DC;
     --dark: #1a0a00;
-    --brown: #8B4513;
     --orange: #FF6600;
   }
 
-  * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -33,7 +31,7 @@
 
   html, body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     overflow-x: hidden;
   }
 
@@ -43,7 +41,6 @@
     background-image: repeating-conic-gradient(#1a0a00 0% 25%, #2d1200 0% 50%);
     background-size: 40px 40px;
     min-height: 100vh;
-    min-height: -webkit-fill-available;
   }
 
   /* ===== REGISTRATION ===== */
@@ -62,9 +59,9 @@
 
   .neon-sign {
     font-family: 'Permanent Marker', cursive;
-    font-size: clamp(1.5rem, 6vw, 3rem);
+    font-size: clamp(1.4rem, 5.5vw, 2.8rem);
     color: #FFD700;
-    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FF6600, 0 0 80px #FF6600;
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FF6600;
     animation: flicker 3s infinite;
     margin-bottom: 8px;
     text-align: center;
@@ -73,11 +70,11 @@
 
   .neon-sign-red {
     font-family: 'Lobster', cursive;
-    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-size: clamp(1rem, 3.5vw, 1.4rem);
     color: #ff4444;
-    text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000, 0 0 40px #ff0000;
+    text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000;
     animation: flicker2 2s infinite;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     text-align: center;
   }
 
@@ -89,9 +86,7 @@
   }
 
   @keyframes flicker2 {
-    0%, 29%, 31%, 100% {
-      text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000, 0 0 40px #ff0000;
-    }
+    0%, 29%, 31%, 100% { text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000; }
     30% { text-shadow: none; }
   }
 
@@ -99,88 +94,67 @@
     background: linear-gradient(145deg, #8B0000, #4a0000);
     border: 3px solid #FFD700;
     border-radius: 20px;
-    padding: 30px 25px;
+    padding: 28px 22px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 0 30px rgba(255,215,0,0.4), inset 0 0 30px rgba(0,0,0,0.5);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .reg-box::before {
-    content: '🍕';
-    font-size: 5rem;
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    opacity: 0.1;
-    transform: rotate(30deg);
-    pointer-events: none;
+    box-shadow: 0 0 30px rgba(255,215,0,0.4);
   }
 
   .reg-box h2 {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-size: clamp(1.4rem, 5vw, 2rem);
     color: #FFD700;
     text-align: center;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     letter-spacing: 3px;
   }
 
   .reg-box input {
     width: 100%;
-    padding: 16px 18px;
-    margin-bottom: 14px;
+    padding: 15px 16px;
+    margin-bottom: 13px;
     border: 3px solid #FFD700;
     border-radius: 12px;
     background: #1a0a00;
     color: #FFD700;
     font-family: 'Special Elite', cursive;
-    font-size: 1.1rem;
+    font-size: 1rem;
     outline: none;
-    transition: all 0.3s;
     -webkit-appearance: none;
     appearance: none;
   }
 
   .reg-box input::placeholder { color: #aa7700; }
-
-  .reg-box input:focus {
-    border-color: #FF6600;
-    box-shadow: 0 0 15px rgba(255,102,0,0.5);
-  }
+  .reg-box input:focus { border-color: #FF6600; box-shadow: 0 0 12px rgba(255,102,0,0.4); }
 
   .btn-retro {
     width: 100%;
-    padding: 17px;
+    padding: 16px;
     background: linear-gradient(145deg, #FFD700, #FF6600);
     border: none;
     border-radius: 12px;
     font-family: 'Bebas Neue', cursive;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     letter-spacing: 3px;
     color: #1a0a00;
     cursor: pointer;
-    transition: all 0.15s;
-    box-shadow: 0 6px 0 #8B4513, 0 8px 15px rgba(0,0,0,0.5);
-    position: relative;
-    top: 0;
+    box-shadow: 0 5px 0 #8B4513;
     -webkit-appearance: none;
     appearance: none;
     touch-action: manipulation;
+    position: relative;
+    top: 0;
+    transition: all 0.15s;
   }
 
-  .btn-retro:active {
-    top: 4px;
-    box-shadow: 0 2px 0 #8B4513;
-  }
+  .btn-retro:active { top: 4px; box-shadow: 0 1px 0 #8B4513; }
 
   .error-msg {
     color: #ff4444;
     text-align: center;
     margin-top: 10px;
-    font-size: 0.9rem;
-    min-height: 20px;
+    font-size: 0.88rem;
+    min-height: 18px;
   }
 
   .stars-bg {
@@ -196,7 +170,6 @@
   .star {
     position: absolute;
     color: #FFD700;
-    font-size: 1rem;
     animation: twinkle 2s infinite;
   }
 
@@ -206,21 +179,30 @@
   }
 
   /* ===== MAIN APP ===== */
-  #mainApp { display: none; min-height: 100vh; flex-direction: column; }
+  #mainApp {
+    display: none;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-  /* Header */
+  /* ===== HEADER ===== */
   header {
     background: linear-gradient(135deg, #CC0000, #8B0000);
     border-bottom: 4px solid #FFD700;
-    padding: 12px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    padding: 10px 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     position: sticky;
     top: 0;
     z-index: 100;
+  }
+
+  /* TOP ROW: logo + username + sticker count */
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
   }
 
   .logo-area {
@@ -231,38 +213,41 @@
 
   .logo-main {
     font-family: 'Permanent Marker', cursive;
-    font-size: clamp(1rem, 4.5vw, 1.8rem);
+    font-size: clamp(1rem, 4vw, 1.6rem);
     color: #FFD700;
-    text-shadow: 2px 2px 0 #8B0000, 0 0 15px rgba(255,215,0,0.4);
+    text-shadow: 2px 2px 0 #8B0000;
     line-height: 1;
   }
 
   .logo-sub {
     font-family: 'Lobster', cursive;
-    font-size: clamp(0.6rem, 2.5vw, 0.85rem);
+    font-size: clamp(0.58rem, 2.2vw, 0.8rem);
     color: #FFD700;
     opacity: 0.8;
     letter-spacing: 1px;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: nowrap;
   }
 
   .user-badge {
     background: rgba(0,0,0,0.4);
     border: 2px solid #FFD700;
     border-radius: 20px;
-    padding: 6px 12px;
+    padding: 5px 11px;
     color: #FFD700;
-    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    font-size: clamp(0.68rem, 2.5vw, 0.85rem);
     display: flex;
     align-items: center;
     gap: 6px;
     white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .user-name-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 90px;
   }
 
   .sticker-count-badge {
@@ -271,55 +256,89 @@
     border-radius: 50%;
     width: 24px;
     height: 24px;
+    min-width: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-family: 'Bebas Neue', cursive;
-    flex-shrink: 0;
+  }
+
+  /* BOTTOM ROW: prizes + admin + logout */
+  .header-bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .btn-prizes {
+    flex: 1;
     background: linear-gradient(145deg, #FFD700, #FF8C00);
     border: none;
     border-radius: 20px;
-    padding: 8px 14px;
+    padding: 10px 14px;
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(0.85rem, 3vw, 1rem);
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
     letter-spacing: 1px;
     color: #1a0a00;
     cursor: pointer;
     box-shadow: 0 3px 0 #8B6000;
-    transition: all 0.15s;
     touch-action: manipulation;
-    white-space: nowrap;
     -webkit-appearance: none;
+    appearance: none;
+    text-align: center;
+    transition: all 0.15s;
   }
 
   .btn-prizes:active { transform: translateY(2px); box-shadow: 0 1px 0 #8B6000; }
 
-  .btn-logout {
-    background: transparent;
-    border: 2px solid rgba(255,215,0,0.5);
+  .btn-admin {
+    flex: 1;
+    background: linear-gradient(145deg, #00FFFF, #0088aa);
+    border: none;
     border-radius: 20px;
-    padding: 6px 10px;
-    color: #FFD700;
-    font-family: 'Special Elite', cursive;
+    padding: 10px 14px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+    letter-spacing: 1px;
+    color: #000;
     cursor: pointer;
-    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    box-shadow: 0 3px 0 #005566;
     touch-action: manipulation;
-    white-space: nowrap;
     -webkit-appearance: none;
+    appearance: none;
+    text-align: center;
+    transition: all 0.15s;
   }
 
-  .btn-logout:active { border-color: #FFD700; background: rgba(255,215,0,0.1); }
+  .btn-admin:active { transform: translateY(2px); box-shadow: 0 1px 0 #005566; }
+
+  .btn-logout {
+    flex: 1;
+    background: rgba(0,0,0,0.35);
+    border: 2px solid rgba(255,215,0,0.6);
+    border-radius: 20px;
+    padding: 10px 14px;
+    color: #FFD700;
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+    letter-spacing: 1px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    appearance: none;
+    text-align: center;
+    transition: all 0.15s;
+  }
+
+  .btn-logout:active { background: rgba(255,215,0,0.15); }
 
   /* Sticker menu bar */
   .sticker-menu-bar {
     background: linear-gradient(135deg, #1a0a00, #2d1200);
     border-bottom: 3px solid #FF6600;
-    padding: 10px 15px;
+    padding: 9px 14px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -330,7 +349,7 @@
     font-size: clamp(1rem, 4vw, 1.4rem);
     color: #FF6600;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255,102,0,0.5);
+    text-shadow: 0 0 8px rgba(255,102,0,0.5);
     white-space: nowrap;
   }
 
@@ -341,16 +360,16 @@
     background: #CC0000;
     border-top: 3px solid #FFD700;
     border-bottom: 3px solid #FFD700;
-    padding: 7px 0;
+    padding: 6px 0;
     overflow: hidden;
     white-space: nowrap;
   }
 
   .marquee-text {
     display: inline-block;
-    animation: marquee 20s linear infinite;
+    animation: marquee 22s linear infinite;
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(0.75rem, 3vw, 1rem);
+    font-size: clamp(0.7rem, 2.8vw, 0.95rem);
     letter-spacing: 4px;
     color: #FFD700;
   }
@@ -362,7 +381,7 @@
 
   /* Main Content */
   .main-content {
-    padding: 20px 12px;
+    padding: 18px 12px;
     max-width: 700px;
     margin: 0 auto;
     width: 100%;
@@ -374,7 +393,7 @@
     color: #FFD700;
     letter-spacing: 4px;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     text-shadow: 2px 2px 0 #CC0000;
   }
 
@@ -382,16 +401,16 @@
     font-family: 'Special Elite', cursive;
     color: #FF6600;
     text-align: center;
-    margin-bottom: 20px;
-    font-size: clamp(0.8rem, 3.5vw, 1rem);
+    margin-bottom: 18px;
+    font-size: clamp(0.8rem, 3vw, 1rem);
   }
 
   /* Sticker Cards */
   .stickers-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin-bottom: 30px;
+    gap: 12px;
+    margin-bottom: 25px;
   }
 
   @media (min-width: 480px) {
@@ -406,39 +425,30 @@
     background: linear-gradient(145deg, #CC0000, #8B0000);
     border: 3px solid #FFD700;
     border-radius: 18px;
-    padding: 22px 12px;
+    padding: 20px 10px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
-    min-height: 130px;
+    min-height: 125px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.15s, box-shadow 0.15s;
   }
 
   .sticker-card:active {
-    transform: scale(0.95);
+    transform: scale(0.94);
     box-shadow: 0 3px 8px rgba(0,0,0,0.5);
-  }
-
-  .sticker-card::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(ellipse, rgba(255,215,0,0.08) 0%, transparent 70%);
-    pointer-events: none;
   }
 
   .sticker-icon {
     font-size: clamp(2rem, 8vw, 3rem);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     display: block;
     animation: bounce 2s ease-in-out infinite;
   }
@@ -450,24 +460,22 @@
 
   .sticker-number {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-size: clamp(0.95rem, 3.5vw, 1.4rem);
     color: #FFD700;
     display: block;
     letter-spacing: 1px;
   }
 
   .sticker-hint {
-    font-size: clamp(0.6rem, 2.5vw, 0.72rem);
+    font-size: clamp(0.6rem, 2.2vw, 0.7rem);
     color: rgba(255,215,0,0.6);
-    margin-top: 6px;
+    margin-top: 5px;
     display: block;
   }
 
   .slide-arrow {
-    font-size: 1rem;
-    color: #FFD700;
-    animation: slideAnim 1s ease-in-out infinite;
     display: inline-block;
+    animation: slideAnim 1s ease-in-out infinite;
   }
 
   @keyframes slideAnim {
@@ -479,30 +487,26 @@
   /* No stickers */
   .no-stickers {
     text-align: center;
-    padding: 50px 20px;
+    padding: 45px 20px;
     color: #aa7700;
   }
 
-  .no-stickers-icon { font-size: 4rem; margin-bottom: 15px; display: block; }
+  .no-stickers-icon { font-size: 3.5rem; margin-bottom: 12px; display: block; }
 
   .no-stickers h3 {
     font-family: 'Bebas Neue', cursive;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #FFD700;
     margin-bottom: 8px;
   }
 
-  .no-stickers p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
+  .no-stickers p { font-size: 0.88rem; line-height: 1.5; }
 
-  /* Retro divider */
   .retro-divider {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 25px 0;
+    margin: 22px 0;
   }
 
   .retro-divider::before,
@@ -513,12 +517,11 @@
     background: linear-gradient(90deg, transparent, #FFD700, transparent);
   }
 
-  .retro-divider span { font-size: 1.3rem; }
+  .retro-divider span { font-size: 1.2rem; }
 
-  /* Checkered footer */
   .checkered-footer {
-    height: 25px;
-    background: repeating-conic-gradient(#CC0000 0% 25%, #FFD700 0% 50%) 0 0 / 25px 25px;
+    height: 22px;
+    background: repeating-conic-gradient(#CC0000 0% 25%, #FFD700 0% 50%) 0 0 / 22px 22px;
     width: 100%;
     margin-top: 20px;
   }
@@ -556,13 +559,13 @@
     font-family: 'Special Elite', cursive;
     color: #FF6600;
     font-size: clamp(0.9rem, 4vw, 1.2rem);
-    margin-top: 12px;
+    margin-top: 10px;
     text-align: center;
   }
 
   .swipe-visual {
-    font-size: clamp(5rem, 20vw, 8rem);
-    margin: 25px;
+    font-size: clamp(5rem, 18vw, 8rem);
+    margin: 22px;
     animation: swipeAnim 2s ease-in-out infinite;
     display: block;
   }
@@ -581,23 +584,23 @@
     border-radius: 11px;
     border: 2px solid #FFD700;
     overflow: hidden;
-    margin-top: 25px;
+    margin-top: 22px;
   }
 
   .swipe-progress-fill {
     height: 100%;
     background: linear-gradient(90deg, #FFD700, #FF6600);
     width: 0%;
-    transition: width 0.08s;
+    transition: width 0.06s;
     border-radius: 9px;
   }
 
   .swipe-cancel {
-    margin-top: 25px;
+    margin-top: 22px;
     background: transparent;
     border: 2px solid rgba(255,215,0,0.4);
     border-radius: 25px;
-    padding: 12px 30px;
+    padding: 13px 32px;
     color: rgba(255,215,0,0.7);
     font-family: 'Special Elite', cursive;
     cursor: pointer;
@@ -625,14 +628,13 @@
   .win-box {
     background: linear-gradient(145deg, #8B0000, #4a0000);
     border: 5px solid #FFD700;
-    border-radius: 25px;
-    padding: clamp(25px, 6vw, 50px) clamp(20px, 5vw, 40px);
+    border-radius: 24px;
+    padding: clamp(24px, 6vw, 48px) clamp(18px, 5vw, 38px);
     text-align: center;
-    max-width: 460px;
+    max-width: 440px;
     width: 100%;
-    position: relative;
     animation: winPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 0 50px rgba(255,215,0,0.4), 0 25px 50px rgba(0,0,0,0.8);
+    box-shadow: 0 0 50px rgba(255,215,0,0.4);
   }
 
   @keyframes winPop {
@@ -642,13 +644,13 @@
 
   .win-emoji {
     font-size: clamp(4rem, 15vw, 6rem);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: block;
   }
 
   .win-title {
     font-family: 'Permanent Marker', cursive;
-    font-size: clamp(1.6rem, 7vw, 2.5rem);
+    font-size: clamp(1.5rem, 7vw, 2.4rem);
     color: #FFD700;
     text-shadow: 0 0 20px rgba(255,215,0,0.6);
     margin-bottom: 10px;
@@ -656,11 +658,11 @@
 
   .win-prize {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    font-size: clamp(1.1rem, 5vw, 1.7rem);
     color: #FF6600;
     letter-spacing: 2px;
-    margin-bottom: 22px;
-    padding: 14px;
+    margin-bottom: 20px;
+    padding: 13px;
     background: rgba(0,0,0,0.3);
     border-radius: 14px;
     border: 2px dashed #FF6600;
@@ -671,17 +673,17 @@
     background: linear-gradient(145deg, #FFD700, #FF6600);
     border: none;
     border-radius: 25px;
-    padding: 15px 35px;
+    padding: 15px 30px;
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
     letter-spacing: 3px;
     color: #1a0a00;
     cursor: pointer;
     box-shadow: 0 5px 0 #8B6000;
-    transition: all 0.15s;
     touch-action: manipulation;
     -webkit-appearance: none;
     width: 100%;
+    transition: all 0.15s;
   }
 
   .btn-close-win:active { transform: translateY(3px); box-shadow: 0 2px 0 #8B6000; }
@@ -699,7 +701,6 @@
     position: absolute;
     top: -20px;
     animation: confettiFall linear forwards;
-    border-radius: 2px;
   }
 
   @keyframes confettiFall {
@@ -724,13 +725,13 @@
     background: linear-gradient(145deg, #1a0a00, #2d1200);
     border: 3px solid #FFD700;
     border-bottom: none;
-    border-radius: 25px 25px 0 0;
-    padding: 25px 20px;
+    border-radius: 24px 24px 0 0;
+    padding: 20px 18px 30px;
     width: 100%;
     max-width: 680px;
     max-height: 88vh;
     overflow-y: auto;
-    box-shadow: 0 -10px 40px rgba(255,215,0,0.2);
+    box-shadow: 0 -8px 35px rgba(255,215,0,0.2);
     animation: slideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     -webkit-overflow-scrolling: touch;
   }
@@ -740,28 +741,28 @@
     100% { transform: translateY(0); }
   }
 
-  .prizes-box::-webkit-scrollbar { width: 6px; }
-  .prizes-box::-webkit-scrollbar-track { background: #1a0a00; border-radius: 3px; }
+  .prizes-box::-webkit-scrollbar { width: 5px; }
+  .prizes-box::-webkit-scrollbar-track { background: #1a0a00; }
   .prizes-box::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 3px; }
 
   .modal-drag-handle {
-    width: 50px;
+    width: 45px;
     height: 5px;
     background: rgba(255,215,0,0.3);
     border-radius: 3px;
-    margin: 0 auto 20px;
+    margin: 0 auto 18px;
   }
 
   .prizes-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .prizes-title {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
     color: #FFD700;
     letter-spacing: 3px;
   }
@@ -772,6 +773,7 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    min-width: 40px;
     color: #FFD700;
     font-size: 1.1rem;
     cursor: pointer;
@@ -780,7 +782,6 @@
     justify-content: center;
     touch-action: manipulation;
     -webkit-appearance: none;
-    flex-shrink: 0;
   }
 
   .btn-close-modal:active { background: rgba(255,215,0,0.25); }
@@ -788,27 +789,27 @@
   .prizes-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 18px;
   }
 
   .stat-card {
     background: rgba(255,215,0,0.07);
-    border: 2px solid rgba(255,215,0,0.25);
-    border-radius: 14px;
-    padding: 14px;
+    border: 2px solid rgba(255,215,0,0.22);
+    border-radius: 13px;
+    padding: 13px;
     text-align: center;
   }
 
   .stat-number {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
     color: #FFD700;
     display: block;
   }
 
   .stat-label {
-    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    font-size: clamp(0.65rem, 2.5vw, 0.78rem);
     color: #aa7700;
   }
 
@@ -816,37 +817,36 @@
 
   .prize-item {
     background: rgba(255,255,255,0.04);
-    border: 2px solid rgba(255,215,0,0.18);
-    border-radius: 14px;
-    padding: 14px;
+    border: 2px solid rgba(255,215,0,0.16);
+    border-radius: 13px;
+    padding: 13px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 13px;
   }
 
-  .prize-emoji { font-size: clamp(1.6rem, 6vw, 2rem); flex-shrink: 0; }
+  .prize-emoji { font-size: clamp(1.5rem, 6vw, 2rem); flex-shrink: 0; }
 
   .prize-info { flex: 1; min-width: 0; }
 
   .prize-name {
     font-family: 'Special Elite', cursive;
     color: #FFD700;
-    font-size: clamp(0.8rem, 3vw, 0.95rem);
+    font-size: clamp(0.78rem, 3vw, 0.92rem);
     display: block;
     margin-bottom: 3px;
-    word-break: break-word;
   }
 
   .prize-time {
-    font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+    font-size: clamp(0.62rem, 2.3vw, 0.72rem);
     color: #aa7700;
   }
 
   .no-prizes {
     text-align: center;
-    padding: 35px;
+    padding: 32px;
     color: #aa7700;
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.6;
   }
 
@@ -867,38 +867,47 @@
     background: linear-gradient(145deg, #0a0a1a, #1a1a2d);
     border: 3px solid #00FFFF;
     border-bottom: none;
-    border-radius: 25px 25px 0 0;
-    padding: 25px 20px;
+    border-radius: 24px 24px 0 0;
+    padding: 20px 18px 30px;
     width: 100%;
     max-width: 700px;
     max-height: 88vh;
     overflow-y: auto;
-    box-shadow: 0 -10px 40px rgba(0,255,255,0.2);
+    box-shadow: 0 -8px 35px rgba(0,255,255,0.2);
     animation: slideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     -webkit-overflow-scrolling: touch;
   }
 
-  .admin-title {
-    font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.4rem, 5vw, 2rem);
-    color: #00FFFF;
-    letter-spacing: 3px;
-    text-shadow: 0 0 10px rgba(0,255,255,0.5);
+  .admin-drag-handle {
+    width: 45px;
+    height: 5px;
+    background: rgba(0,255,255,0.25);
+    border-radius: 3px;
+    margin: 0 auto 18px;
   }
 
-  .admin-header {
+  .admin-header-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+  }
+
+  .admin-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    color: #00FFFF;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0,255,255,0.4);
   }
 
   .btn-close-admin {
-    background: rgba(0,255,255,0.1);
+    background: rgba(0,255,255,0.08);
     border: 2px solid #00FFFF;
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    min-width: 40px;
     color: #00FFFF;
     font-size: 1.1rem;
     cursor: pointer;
@@ -907,23 +916,24 @@
     justify-content: center;
     touch-action: manipulation;
     -webkit-appearance: none;
-    flex-shrink: 0;
   }
 
+  .btn-close-admin:active { background: rgba(0,255,255,0.2); }
+
   .admin-desc {
-    color: rgba(0,255,255,0.55);
-    margin-bottom: 18px;
-    font-size: 0.88rem;
+    color: rgba(0,255,255,0.5);
+    margin-bottom: 16px;
+    font-size: 0.85rem;
     line-height: 1.5;
   }
 
-  .admin-users-list { display: flex; flex-direction: column; gap: 12px; }
+  .admin-users-list { display: flex; flex-direction: column; gap: 11px; }
 
   .admin-user-item {
     background: rgba(0,255,255,0.04);
-    border: 2px solid rgba(0,255,255,0.18);
+    border: 2px solid rgba(0,255,255,0.16);
     border-radius: 14px;
-    padding: 14px;
+    padding: 13px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -935,76 +945,57 @@
   .admin-user-name {
     font-family: 'Special Elite', cursive;
     color: #00FFFF;
-    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
     display: block;
     margin-bottom: 3px;
   }
 
   .admin-user-stickers {
-    font-size: clamp(0.68rem, 2.5vw, 0.8rem);
-    color: rgba(0,255,255,0.55);
+    font-size: clamp(0.65rem, 2.3vw, 0.78rem);
+    color: rgba(0,255,255,0.5);
     line-height: 1.5;
   }
 
   .btn-give-sticker {
     background: linear-gradient(145deg, #00FFFF, #0088aa);
     border: none;
-    border-radius: 20px;
-    padding: 12px 18px;
+    border-radius: 18px;
+    padding: 12px 16px;
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(0.9rem, 3vw, 1rem);
-    letter-spacing: 1px;
-    color: #000;
-    cursor: pointer;
-    box-shadow: 0 4px 0 #005566;
-    transition: all 0.15s;
-    touch-action: manipulation;
-    -webkit-appearance: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .btn-give-sticker:active { transform: translateY(3px); box-shadow: 0 1px 0 #005566; }
-
-  .btn-admin-open {
-    background: linear-gradient(145deg, #00FFFF, #0088aa);
-    border: none;
-    border-radius: 20px;
-    padding: 8px 14px;
-    font-family: 'Bebas Neue', cursive;
-    font-size: clamp(0.8rem, 3vw, 1rem);
+    font-size: clamp(0.88rem, 3vw, 1rem);
     letter-spacing: 1px;
     color: #000;
     cursor: pointer;
     box-shadow: 0 3px 0 #005566;
-    transition: all 0.15s;
     touch-action: manipulation;
     -webkit-appearance: none;
     white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.15s;
   }
 
-  .btn-admin-open:active { transform: translateY(2px); box-shadow: 0 1px 0 #005566; }
+  .btn-give-sticker:active { transform: translateY(2px); box-shadow: 0 1px 0 #005566; }
 
   .admin-empty {
     color: rgba(0,255,255,0.35);
     text-align: center;
-    padding: 25px;
-    font-size: 0.9rem;
+    padding: 22px;
+    font-size: 0.88rem;
   }
 
   /* ===== TOAST ===== */
   .toast {
     position: fixed;
-    bottom: 30px;
+    bottom: 28px;
     left: 50%;
     transform: translateX(-50%) translateY(120px);
     background: linear-gradient(145deg, #1a0a00, #2d1200);
     border: 2px solid #FFD700;
     border-radius: 25px;
-    padding: 14px 25px;
+    padding: 13px 22px;
     color: #FFD700;
     font-family: 'Special Elite', cursive;
-    font-size: clamp(0.85rem, 3vw, 1rem);
+    font-size: clamp(0.82rem, 3vw, 0.95rem);
     z-index: 9999;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 8px 25px rgba(0,0,0,0.6);
@@ -1014,9 +1005,6 @@
   }
 
   .toast.show { transform: translateX(-50%) translateY(0); }
-
-  /* ===== SAFE AREA ===== */
-  .safe-bottom { height: env(safe-area-inset-bottom, 0px); }
 </style>
 </head>
 <body>
@@ -1030,11 +1018,13 @@
   <div class="neon-sign-red">★ ДОБРО ПОЖАЛОВАТЬ ★</div>
   <div class="reg-box">
     <h2>🎉 ВОЙТИ В КАФЕ</h2>
-    <input type="text" id="regName" placeholder="✏️ Ваше имя..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" />
-    <input type="password" id="regPass" placeholder="🔑 Пароль..." autocomplete="off" />
+    <input type="text" id="regName" placeholder="✏️ Ваше имя..."
+      autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" />
+    <input type="password" id="regPass" placeholder="🔑 Пароль..."
+      autocomplete="off" />
     <button class="btn-retro" onclick="handleLogin()">ВОЙТИ! 🚀</button>
     <div class="error-msg" id="errorMsg"></div>
-    <div style="margin-top:14px; text-align:center; color:#aa7700; font-size:0.82rem;">
+    <div style="margin-top:13px;text-align:center;color:#aa7700;font-size:0.8rem;">
       ★ Зарегистрируйтесь у менеджера ★
     </div>
   </div>
@@ -1043,27 +1033,32 @@
 <!-- ===== MAIN APP ===== -->
 <div id="mainApp">
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
-    <div class="logo-area">
-      <div class="logo-main">🍕 Пиццерия</div>
-      <div class="logo-sub">✦ ШКОЛЬНАЯ ПИЦЦА ✦</div>
-    </div>
-    <div class="header-right">
+    <!-- Row 1: Logo + User badge -->
+    <div class="header-top">
+      <div class="logo-area">
+        <div class="logo-main">🍕 Пиццерия</div>
+        <div class="logo-sub">✦ ШКОЛЬНАЯ ПИЦЦА ✦</div>
+      </div>
       <div class="user-badge">
-        👤 <span id="headerUsername">Гость</span>
+        👤
+        <span class="user-name-text" id="headerUsername">Гость</span>
         <div class="sticker-count-badge" id="headerStickerCount">0</div>
       </div>
+    </div>
+    <!-- Row 2: Buttons -->
+    <div class="header-bottom" id="headerBottom">
       <button class="btn-prizes" onclick="openPrizes()">🏆 ПРИЗЫ</button>
-      <div id="adminBtnContainer"></div>
-      <button class="btn-logout" onclick="handleLogout()">↩</button>
+      <!-- admin btn injected here if needed -->
+      <button class="btn-logout" onclick="handleLogout()">↩ ВЫЙТИ</button>
     </div>
   </header>
 
-  <!-- Sticker menu bar -->
+  <!-- Sticker bar -->
   <div class="sticker-menu-bar">
     <span class="sticker-menu-title">🎴 <span>СТИКЕР</span>ПИЦЦА</span>
-    <span style="color:rgba(255,215,0,0.45); font-size:clamp(0.65rem,2.5vw,0.85rem); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+    <span style="color:rgba(255,215,0,0.4);font-size:clamp(0.6rem,2.3vw,0.82rem);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
       — Открой и выиграй!
     </span>
   </div>
@@ -1075,7 +1070,7 @@
     </span>
   </div>
 
-  <!-- Main content -->
+  <!-- Content -->
   <div class="main-content">
     <div class="section-title">МОИ СТИКЕРЫ</div>
     <div class="section-subtitle">
@@ -1092,14 +1087,13 @@
 
     <div class="retro-divider"><span>🍕</span></div>
 
-    <div style="text-align:center; color:rgba(255,215,0,0.25); font-size:clamp(0.7rem,2.5vw,0.85rem); padding-bottom:10px; line-height:1.7;">
+    <div style="text-align:center;color:rgba(255,215,0,0.22);font-size:clamp(0.68rem,2.3vw,0.82rem);padding-bottom:10px;line-height:1.7;">
       <p>★ Пиццерия "Школьная Пицца" ★</p>
       <p>Авто-кафе ★ Открытие стикеров ★ С любовью из 60-х 🎸</p>
     </div>
   </div>
 
   <div class="checkered-footer"></div>
-  <div class="safe-bottom"></div>
 </div>
 
 <!-- ===== SWIPE OVERLAY ===== -->
@@ -1125,7 +1119,7 @@
 </div>
 
 <!-- ===== PRIZES MODAL ===== -->
-<div id="prizesModal" onclick="handleModalBgClick(event,'prizesModal',closePrizes)">
+<div id="prizesModal">
   <div class="prizes-box">
     <div class="modal-drag-handle"></div>
     <div class="prizes-header">
@@ -1149,10 +1143,10 @@
 </div>
 
 <!-- ===== ADMIN PANEL ===== -->
-<div id="adminPanel" onclick="handleModalBgClick(event,'adminPanel',closeAdmin)">
+<div id="adminPanel">
   <div class="admin-box">
-    <div class="modal-drag-handle" style="background:rgba(0,255,255,0.2);"></div>
-    <div class="admin-header">
+    <div class="admin-drag-handle"></div>
+    <div class="admin-header-row">
       <div class="admin-title">🔧 ПАНЕЛЬ АДМИНА</div>
       <button class="btn-close-admin" onclick="closeAdmin()">✕</button>
     </div>
@@ -1171,7 +1165,8 @@
 // CONSTANTS
 // ============================================================
 
-const ADMIN = { username: 'Vladimir', password: '67timyr' };
+const ADMIN_NAME = 'Vladimir';
+const ADMIN_PASS = '67timyr';
 
 const PRIZES = [
   { id: 'nothing',    name: 'Ничего не выиграл',                     emoji: '😞', weight: 99 },
@@ -1186,89 +1181,54 @@ const PRIZES = [
 // STATE
 // ============================================================
 
-let state = {
-  currentUser: null,
-  users: {},
-};
+let currentUser = null;
 
-// ============================================================
-// STORAGE
-// ============================================================
-
-function saveState() {
-  try { localStorage.setItem('pizzaState_v2', JSON.stringify(state.users)); } catch(e) {}
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem('pizzaUsers_v3') || '{}'); } catch(e) { return {}; }
 }
 
-function loadState() {
-  try {
-    const saved = localStorage.getItem('pizzaState_v2');
-    if (saved) state.users = JSON.parse(saved);
-  } catch(e) { state.users = {}; }
+function saveUsers(users) {
+  try { localStorage.setItem('pizzaUsers_v3', JSON.stringify(users)); } catch(e) {}
 }
 
-function getUser(username) { return state.users[username] || null; }
-
-function createUser(username, password) {
-  if (!state.users[username]) {
-    state.users[username] = { password, stickers: 0, prizes: [], stickersOpened: 0 };
-    saveState();
-  }
+function getMyData() {
+  if (!currentUser) return null;
+  return getUsers()[currentUser] || null;
 }
 
-function getCurrentUserData() { return state.users[state.currentUser] || null; }
+function saveMyData(data) {
+  if (!currentUser) return;
+  const users = getUsers();
+  users[currentUser] = data;
+  saveUsers(users);
+}
 
 // ============================================================
 // STARS
 // ============================================================
 
-(function createStars() {
-  const container = document.getElementById('starsBg');
-  const icons = ['⭐','🌟','✨','★','☆'];
-  for (let i = 0; i < 20; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.textContent = icons[Math.floor(Math.random() * icons.length)];
-    star.style.left = Math.random() * 100 + '%';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 3 + 's';
-    star.style.animationDuration = (1.5 + Math.random() * 2) + 's';
-    star.style.opacity = 0.15 + Math.random() * 0.25;
-    star.style.fontSize = (0.7 + Math.random() * 0.8) + 'rem';
-    container.appendChild(star);
+(function() {
+  const c = document.getElementById('starsBg');
+  const icons = ['⭐','🌟','✨','★'];
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = icons[i % icons.length];
+    s.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      font-size:${0.7+Math.random()*0.7}rem;
+      opacity:${0.12+Math.random()*0.2};
+      animation-delay:${Math.random()*3}s;
+      animation-duration:${1.5+Math.random()*2}s;
+    `;
+    c.appendChild(s);
   }
 })();
 
 // ============================================================
 // LOGIN
 // ============================================================
-
-function handleLogin() {
-  const name = document.getElementById('regName').value.trim();
-  const pass = document.getElementById('regPass').value.trim();
-  const errEl = document.getElementById('errorMsg');
-
-  if (!name || !pass) { errEl.textContent = '⚠️ Введите имя и пароль!'; return; }
-
-  if (name === ADMIN.username && pass === ADMIN.password) {
-    state.currentUser = ADMIN.username;
-    if (!state.users[ADMIN.username]) createUser(ADMIN.username, ADMIN.password);
-    errEl.textContent = '';
-    enterApp(true);
-    return;
-  }
-
-  const existing = getUser(name);
-  if (existing) {
-    if (existing.password !== pass) { errEl.textContent = '❌ Неверный пароль!'; return; }
-    state.currentUser = name;
-  } else {
-    createUser(name, pass);
-    state.currentUser = name;
-  }
-
-  errEl.textContent = '';
-  enterApp(false);
-}
 
 document.getElementById('regName').addEventListener('keydown', e => {
   if (e.key === 'Enter') document.getElementById('regPass').focus();
@@ -1277,57 +1237,108 @@ document.getElementById('regPass').addEventListener('keydown', e => {
   if (e.key === 'Enter') handleLogin();
 });
 
+function handleLogin() {
+  const name = document.getElementById('regName').value.trim();
+  const pass = document.getElementById('regPass').value.trim();
+  const err  = document.getElementById('errorMsg');
+
+  if (!name || !pass) { err.textContent = '⚠️ Введите имя и пароль!'; return; }
+
+  const isAdmin = (name === ADMIN_NAME && pass === ADMIN_PASS);
+
+  const users = getUsers();
+
+  if (isAdmin) {
+    if (!users[ADMIN_NAME]) {
+      users[ADMIN_NAME] = { password: ADMIN_PASS, stickers: 0, prizes: [], stickersOpened: 0 };
+      saveUsers(users);
+    }
+    currentUser = ADMIN_NAME;
+    err.textContent = '';
+    enterApp(true);
+    return;
+  }
+
+  if (users[name]) {
+    if (users[name].password !== pass) { err.textContent = '❌ Неверный пароль!'; return; }
+  } else {
+    users[name] = { password: pass, stickers: 0, prizes: [], stickersOpened: 0 };
+    saveUsers(users);
+  }
+
+  currentUser = name;
+  err.textContent = '';
+  enterApp(false);
+}
+
 function enterApp(isAdmin) {
   document.getElementById('regOverlay').style.display = 'none';
   document.getElementById('starsBg').style.display = 'none';
-  const app = document.getElementById('mainApp');
-  app.style.display = 'flex';
-  document.getElementById('headerUsername').textContent = state.currentUser;
+  document.getElementById('mainApp').style.display = 'flex';
+  document.getElementById('headerUsername').textContent = currentUser;
 
+  // Build header bottom buttons
+  const hb = document.getElementById('headerBottom');
+  hb.innerHTML = '';
+
+  // Prizes button
+  const btnPrizes = document.createElement('button');
+  btnPrizes.className = 'btn-prizes';
+  btnPrizes.innerHTML = '🏆 ПРИЗЫ';
+  btnPrizes.onclick = openPrizes;
+  hb.appendChild(btnPrizes);
+
+  // Admin button (only for admin)
   if (isAdmin) {
-    document.getElementById('adminBtnContainer').innerHTML =
-      `<button class="btn-admin-open" onclick="openAdmin()">🔧 АДМИН</button>`;
-  } else {
-    document.getElementById('adminBtnContainer').innerHTML = '';
+    const btnAdmin = document.createElement('button');
+    btnAdmin.className = 'btn-admin';
+    btnAdmin.innerHTML = '🔧 АДМИН';
+    btnAdmin.onclick = openAdmin;
+    hb.appendChild(btnAdmin);
   }
+
+  // Logout button
+  const btnLogout = document.createElement('button');
+  btnLogout.className = 'btn-logout';
+  btnLogout.innerHTML = '↩ ВЫЙТИ';
+  btnLogout.onclick = handleLogout;
+  hb.appendChild(btnLogout);
 
   updateUI();
 }
 
 function handleLogout() {
-  state.currentUser = null;
+  currentUser = null;
   document.getElementById('regOverlay').style.display = 'flex';
   document.getElementById('starsBg').style.display = 'block';
   document.getElementById('mainApp').style.display = 'none';
   document.getElementById('regName').value = '';
   document.getElementById('regPass').value = '';
   document.getElementById('errorMsg').textContent = '';
-  document.getElementById('adminBtnContainer').innerHTML = '';
-  closeAllModals();
+  closePrizes();
+  closeAdmin();
+  closeWin();
+  if (document.getElementById('swipeOverlay').style.display !== 'none') cancelSwipe();
 }
 
 // ============================================================
-// UI UPDATE
+// UI
 // ============================================================
 
 function updateUI() {
-  const user = getCurrentUserData();
-  if (!user) return;
-  document.getElementById('availableStickers').textContent = user.stickers;
-  document.getElementById('headerStickerCount').textContent = user.stickers;
-  renderStickers(user.stickers);
+  const data = getMyData();
+  if (!data) return;
+  document.getElementById('availableStickers').textContent = data.stickers;
+  document.getElementById('headerStickerCount').textContent = data.stickers;
+  renderStickers(data.stickers);
 }
 
 function renderStickers(count) {
-  const grid = document.getElementById('stickersGrid');
+  const grid  = document.getElementById('stickersGrid');
   const noMsg = document.getElementById('noStickersMsg');
   grid.innerHTML = '';
 
-  if (count === 0) {
-    noMsg.style.display = 'block';
-    return;
-  }
-
+  if (count === 0) { noMsg.style.display = 'block'; return; }
   noMsg.style.display = 'none';
 
   for (let i = 0; i < count; i++) {
@@ -1335,163 +1346,129 @@ function renderStickers(count) {
     card.className = 'sticker-card';
     card.innerHTML = `
       <span class="sticker-icon">🎴</span>
-      <span class="sticker-number">СТИКЕР #${i + 1}</span>
+      <span class="sticker-number">СТИКЕР #${i+1}</span>
       <span class="sticker-hint"><span class="slide-arrow">←→</span> проведи!</span>
     `;
-
-    card.addEventListener('click', () => openSwipeOverlay(i));
-    card.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      openSwipeOverlay(i);
-    }, { passive: false });
-
+    card.addEventListener('click', () => openSwipeOverlay());
+    card.addEventListener('touchend', e => { e.preventDefault(); openSwipeOverlay(); }, { passive: false });
     grid.appendChild(card);
   }
 }
 
 // ============================================================
-// SWIPE OVERLAY
+// SWIPE
 // ============================================================
 
-let swipeState = {
-  active: false,
-  startX: null,
-  startY: null,
-  completed: false,
-  stickerIndex: null,
-};
+let swipeActive = false;
+let swipeStartX = null;
+let swipeStartY = null;
+let swipeDone   = false;
 
-function openSwipeOverlay(index) {
-  const user = getCurrentUserData();
-  if (!user || user.stickers === 0) return;
-
-  swipeState.active = true;
-  swipeState.stickerIndex = index;
-  swipeState.completed = false;
-  swipeState.startX = null;
-  swipeState.startY = null;
-
+function openSwipeOverlay() {
+  const data = getMyData();
+  if (!data || data.stickers === 0) return;
+  swipeActive = true;
+  swipeDone   = false;
+  swipeStartX = null;
+  swipeStartY = null;
   document.getElementById('swipeProgress').style.width = '0%';
   document.getElementById('swipeOverlay').style.display = 'flex';
 }
 
 function cancelSwipe() {
-  swipeState.active = false;
-  swipeState.startX = null;
+  swipeActive = false;
+  swipeStartX = null;
   document.getElementById('swipeOverlay').style.display = 'none';
 }
 
-function getSwipeThreshold() { return window.innerWidth * 0.72; }
+function threshold() { return window.innerWidth * 0.72; }
 
-// Touch events
 const swipeEl = document.getElementById('swipeOverlay');
 
-swipeEl.addEventListener('touchstart', function(e) {
-  if (!swipeState.active || swipeState.completed) return;
-  const touch = e.touches[0];
-  swipeState.startX = touch.clientX;
-  swipeState.startY = touch.clientY;
+swipeEl.addEventListener('touchstart', e => {
+  if (!swipeActive || swipeDone) return;
+  swipeStartX = e.touches[0].clientX;
+  swipeStartY = e.touches[0].clientY;
 }, { passive: true });
 
-swipeEl.addEventListener('touchmove', function(e) {
-  if (!swipeState.active || swipeState.startX === null || swipeState.completed) return;
+swipeEl.addEventListener('touchmove', e => {
+  if (!swipeActive || swipeStartX === null || swipeDone) return;
   e.preventDefault();
-
-  const touch = e.touches[0];
-  const dx = touch.clientX - swipeState.startX;
-  const dy = Math.abs(touch.clientY - swipeState.startY);
-
-  if (dy > 60 && Math.abs(dx) < dy) return;
+  const dx = e.touches[0].clientX - swipeStartX;
+  const dy = Math.abs(e.touches[0].clientY - swipeStartY);
+  if (dy > 55 && Math.abs(dx) < dy) return;
   if (dx < 0) { document.getElementById('swipeProgress').style.width = '0%'; return; }
-
-  const progress = Math.min((dx / getSwipeThreshold()) * 100, 100);
-  document.getElementById('swipeProgress').style.width = progress + '%';
-
-  if (progress >= 100) {
-    swipeState.completed = true;
-    onSwipeComplete();
-  }
+  const pct = Math.min((dx / threshold()) * 100, 100);
+  document.getElementById('swipeProgress').style.width = pct + '%';
+  if (pct >= 100) { swipeDone = true; onSwipeDone(); }
 }, { passive: false });
 
-swipeEl.addEventListener('touchend', function() {
-  if (!swipeState.active || swipeState.completed) return;
-  const prog = parseFloat(document.getElementById('swipeProgress').style.width) || 0;
-  if (prog < 100) {
-    document.getElementById('swipeProgress').style.width = '0%';
-    swipeState.startX = null;
-    swipeState.startY = null;
-  }
+swipeEl.addEventListener('touchend', () => {
+  if (!swipeActive || swipeDone) return;
+  const pct = parseFloat(document.getElementById('swipeProgress').style.width) || 0;
+  if (pct < 100) { document.getElementById('swipeProgress').style.width = '0%'; swipeStartX = null; }
 }, { passive: true });
 
-// Mouse events (desktop)
-swipeEl.addEventListener('mousedown', function(e) {
-  if (!swipeState.active || swipeState.completed) return;
-  swipeState.startX = e.clientX;
-  swipeState.startY = e.clientY;
+swipeEl.addEventListener('mousedown', e => {
+  if (!swipeActive || swipeDone) return;
+  swipeStartX = e.clientX;
 });
 
-document.addEventListener('mousemove', function(e) {
-  if (!swipeState.active || swipeState.startX === null || swipeState.completed) return;
-  const dx = e.clientX - swipeState.startX;
+document.addEventListener('mousemove', e => {
+  if (!swipeActive || swipeStartX === null || swipeDone) return;
+  const dx = e.clientX - swipeStartX;
   if (dx < 0) { document.getElementById('swipeProgress').style.width = '0%'; return; }
-  const progress = Math.min((dx / getSwipeThreshold()) * 100, 100);
-  document.getElementById('swipeProgress').style.width = progress + '%';
-  if (progress >= 100) { swipeState.completed = true; onSwipeComplete(); }
+  const pct = Math.min((dx / threshold()) * 100, 100);
+  document.getElementById('swipeProgress').style.width = pct + '%';
+  if (pct >= 100) { swipeDone = true; onSwipeDone(); }
 });
 
-document.addEventListener('mouseup', function() {
-  if (!swipeState.active || swipeState.completed) return;
-  const prog = parseFloat(document.getElementById('swipeProgress').style.width) || 0;
-  if (prog < 100) {
-    document.getElementById('swipeProgress').style.width = '0%';
-    swipeState.startX = null;
-  }
+document.addEventListener('mouseup', () => {
+  if (!swipeActive || swipeDone) return;
+  const pct = parseFloat(document.getElementById('swipeProgress').style.width) || 0;
+  if (pct < 100) { document.getElementById('swipeProgress').style.width = '0%'; swipeStartX = null; }
 });
 
-function onSwipeComplete() {
+swipeEl.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+
+function onSwipeDone() {
   setTimeout(() => {
     document.getElementById('swipeOverlay').style.display = 'none';
     revealPrize();
-  }, 250);
+  }, 230);
 }
 
 // ============================================================
-// PRIZE LOGIC
+// PRIZE
 // ============================================================
 
 function rollPrize() {
   const total = PRIZES.reduce((a, p) => a + p.weight, 0);
   let r = Math.random() * total;
-  for (const prize of PRIZES) {
-    if (r < prize.weight) return prize;
-    r -= prize.weight;
-  }
+  for (const p of PRIZES) { if (r < p.weight) return p; r -= p.weight; }
   return PRIZES[0];
 }
 
 function revealPrize() {
-  const user = getCurrentUserData();
-  if (!user || user.stickers === 0) return;
-
+  const data = getMyData();
+  if (!data || data.stickers === 0) return;
   const prize = rollPrize();
-  user.stickers -= 1;
-  user.stickersOpened = (user.stickersOpened || 0) + 1;
-  user.prizes = user.prizes || [];
-  user.prizes.push({
-    prizeId: prize.id,
-    prizeName: prize.name,
+  data.stickers       -= 1;
+  data.stickersOpened  = (data.stickersOpened || 0) + 1;
+  data.prizes          = data.prizes || [];
+  data.prizes.push({
+    prizeName:  prize.name,
     prizeEmoji: prize.emoji,
-    time: new Date().toLocaleString('ru-RU'),
-    timestamp: Date.now(),
+    time:       new Date().toLocaleString('ru-RU'),
+    timestamp:  Date.now(),
   });
-
-  saveState();
+  saveMyData(data);
   updateUI();
   showWin(prize);
 }
 
 function showWin(prize) {
-  document.getElementById('winEmoji').textContent = prize.emoji;
+  document.getElementById('winEmoji').textContent   = prize.emoji;
   document.getElementById('winPrizeText').textContent = prize.name;
   document.getElementById('winOverlay').style.display = 'flex';
   if (prize.id !== 'nothing') createConfetti();
@@ -1507,21 +1484,22 @@ function closeWin() {
 // ============================================================
 
 function createConfetti() {
-  const container = document.getElementById('confettiContainer');
-  container.innerHTML = '';
-  const colors = ['#FFD700','#FF6600','#CC0000','#FF4444','#FF8C00','#ffffff','#FF69B4','#00FF88'];
-  for (let i = 0; i < 70; i++) {
-    const piece = document.createElement('div');
-    piece.className = 'confetti-piece';
-    piece.style.left = Math.random() * 100 + '%';
-    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-    const size = 8 + Math.random() * 10;
-    piece.style.width = size + 'px';
-    piece.style.height = size + 'px';
-    piece.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
-    piece.style.animationDelay = Math.random() * 0.8 + 's';
-    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    container.appendChild(piece);
+  const c = document.getElementById('confettiContainer');
+  c.innerHTML = '';
+  const colors = ['#FFD700','#FF6600','#CC0000','#FF4444','#ffffff','#FF69B4','#00FF88'];
+  for (let i = 0; i < 65; i++) {
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    const sz = 7 + Math.random() * 10;
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${sz}px; height:${sz}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      border-radius:${Math.random()>0.5?'50%':'2px'};
+      animation-duration:${1.5+Math.random()*2.5}s;
+      animation-delay:${Math.random()*0.8}s;
+    `;
+    c.appendChild(p);
   }
 }
 
@@ -1530,13 +1508,11 @@ function createConfetti() {
 // ============================================================
 
 function openPrizes() {
-  const user = getCurrentUserData();
-  if (!user) return;
-
-  const prizes = user.prizes || [];
-  document.getElementById('totalPrizesCount').textContent = prizes.length;
-  document.getElementById('totalStickersOpened').textContent = user.stickersOpened || 0;
-
+  const data = getMyData();
+  if (!data) return;
+  const prizes = data.prizes || [];
+  document.getElementById('totalPrizesCount').textContent    = prizes.length;
+  document.getElementById('totalStickersOpened').textContent = data.stickersOpened || 0;
   const list = document.getElementById('prizesList');
   if (prizes.length === 0) {
     list.innerHTML = '<div class="no-prizes">🎴 Ещё нет выигрышей<br><small>Открывайте стикеры!</small></div>';
@@ -1551,7 +1527,6 @@ function openPrizes() {
       </div>
     `).join('');
   }
-
   document.getElementById('prizesModal').style.display = 'flex';
 }
 
@@ -1559,12 +1534,16 @@ function closePrizes() {
   document.getElementById('prizesModal').style.display = 'none';
 }
 
+document.getElementById('prizesModal').addEventListener('click', function(e) {
+  if (e.target === this) closePrizes();
+});
+
 // ============================================================
 // ADMIN PANEL
 // ============================================================
 
 function openAdmin() {
-  if (state.currentUser !== ADMIN.username) return;
+  if (currentUser !== ADMIN_NAME) return;
   renderAdminUsers();
   document.getElementById('adminPanel').style.display = 'flex';
 }
@@ -1573,52 +1552,46 @@ function closeAdmin() {
   document.getElementById('adminPanel').style.display = 'none';
 }
 
-function renderAdminUsers() {
-  const list = document.getElementById('adminUsersList');
-  const users = Object.entries(state.users).filter(([n]) => n !== ADMIN.username);
+document.getElementById('adminPanel').addEventListener('click', function(e) {
+  if (e.target === this) closeAdmin();
+});
 
-  if (users.length === 0) {
+function renderAdminUsers() {
+  const users = getUsers();
+  const list  = document.getElementById('adminUsersList');
+  const names = Object.keys(users).filter(n => n !== ADMIN_NAME);
+
+  if (names.length === 0) {
     list.innerHTML = '<div class="admin-empty">Нет зарегистрированных пользователей</div>';
     return;
   }
 
-  list.innerHTML = users.map(([name, data]) => `
-    <div class="admin-user-item" id="adminUser_${CSS.escape(name)}">
-      <div class="admin-user-info">
-        <span class="admin-user-name">👤 ${name}</span>
-        <span class="admin-user-stickers">
-          🎴 Стикеров: <b style="color:#00FFFF">${data.stickers}</b> &nbsp;|&nbsp;
-          🏆 Призов: <b style="color:#FFD700">${(data.prizes||[]).length}</b> &nbsp;|&nbsp;
-          📊 Открыто: <b style="color:#FF6600">${data.stickersOpened||0}</b>
-        </span>
+  list.innerHTML = names.map(name => {
+    const d = users[name];
+    return `
+      <div class="admin-user-item">
+        <div class="admin-user-info">
+          <span class="admin-user-name">👤 ${name}</span>
+          <span class="admin-user-stickers">
+            🎴 Стикеров: <b style="color:#00FFFF">${d.stickers}</b> &nbsp;
+            🏆 Призов: <b style="color:#FFD700">${(d.prizes||[]).length}</b> &nbsp;
+            📊 Открыто: <b style="color:#FF6600">${d.stickersOpened||0}</b>
+          </span>
+        </div>
+        <button class="btn-give-sticker" onclick="giveSticker('${name}')">+1 🎴</button>
       </div>
-      <button class="btn-give-sticker" onclick="giveSticker('${name}')">+1 🎴</button>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function giveSticker(username) {
-  if (!state.users[username]) return;
-  state.users[username].stickers = (state.users[username].stickers || 0) + 1;
-  saveState();
+  const users = getUsers();
+  if (!users[username]) return;
+  users[username].stickers = (users[username].stickers || 0) + 1;
+  saveUsers(users);
   renderAdminUsers();
-  if (state.currentUser === username) updateUI();
+  if (currentUser === username) updateUI();
   showToast(`✅ ${username} получил +1 стикер!`);
-}
-
-// ============================================================
-// HELPERS
-// ============================================================
-
-function handleModalBgClick(e, modalId, closeFn) {
-  if (e.target.id === modalId) closeFn();
-}
-
-function closeAllModals() {
-  closePrizes();
-  closeAdmin();
-  closeWin();
-  if (document.getElementById('swipeOverlay').style.display !== 'none') cancelSwipe();
 }
 
 // ============================================================
@@ -1627,11 +1600,11 @@ function closeAllModals() {
 
 let toastTimer;
 function showToast(msg) {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.classList.add('show');
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
 // ============================================================
@@ -1639,36 +1612,16 @@ function showToast(msg) {
 // ============================================================
 
 setInterval(() => {
-  if (!state.currentUser) return;
-  try {
-    const saved = localStorage.getItem('pizzaState_v2');
-    if (!saved) return;
-    const fresh = JSON.parse(saved);
-    const freshUser = fresh[state.currentUser];
-    const cur = getCurrentUserData();
-    if (!freshUser || !cur) return;
-    if (freshUser.stickers !== cur.stickers || freshUser.stickersOpened !== cur.stickersOpened) {
-      const diff = freshUser.stickers - cur.stickers;
-      state.users = fresh;
-      updateUI();
-      if (diff > 0) showToast(`🎴 Вы получили ${diff} новый стикер!`);
-    }
-  } catch(e) {}
+  if (!currentUser || currentUser === ADMIN_NAME) return;
+  const data = getMyData();
+  if (!data) return;
+  const displayed = parseInt(document.getElementById('headerStickerCount').textContent) || 0;
+  if (data.stickers !== displayed) {
+    const diff = data.stickers - displayed;
+    updateUI();
+    if (diff > 0) showToast(`🎴 Вы получили ${diff} новый стикер!`);
+  }
 }, 2000);
-
-// ============================================================
-// PREVENT SCROLL ON SWIPE OVERLAY
-// ============================================================
-
-document.getElementById('swipeOverlay').addEventListener('touchmove', function(e) {
-  e.preventDefault();
-}, { passive: false });
-
-// ============================================================
-// INIT
-// ============================================================
-
-loadState();
 </script>
 </body>
 </html>
