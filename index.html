@@ -23,7 +23,6 @@
   }
 
   input { -webkit-user-select: text; user-select: text; }
-
   html, body { width: 100%; min-height: 100%; overflow-x: hidden; }
 
   body {
@@ -34,44 +33,11 @@
     min-height: 100vh;
   }
 
-  /* ===== LOADING SCREEN ===== */
-  #loadingScreen {
-    position: fixed; inset: 0;
-    background: radial-gradient(ellipse at center, #2d0a00 0%, #000 100%);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; z-index: 99999;
-  }
-
-  .loading-pizza {
-    font-size: 5rem;
-    animation: spinPizza 1.5s linear infinite;
-    margin-bottom: 20px;
-  }
-
-  @keyframes spinPizza {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.1); }
-    100% { transform: rotate(360deg) scale(1); }
-  }
-
-  .loading-text {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 1.5rem;
-    color: #FFD700;
-    letter-spacing: 4px;
-    animation: pulse 1s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
   /* ===== REGISTRATION ===== */
   #regOverlay {
     position: fixed; inset: 0;
     background: radial-gradient(ellipse at center, #2d0a00 0%, #000 100%);
-    display: none; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     z-index: 9999; flex-direction: column; padding: 20px;
     overflow-y: auto;
   }
@@ -95,12 +61,14 @@
   }
 
   @keyframes flicker {
-    0%,19%,21%,23%,25%,54%,56%,100% { text-shadow: 0 0 10px #FFD700,0 0 20px #FFD700,0 0 40px #FF6600,0 0 80px #FF6600; }
+    0%,19%,21%,23%,25%,54%,56%,100% {
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FF6600, 0 0 80px #FF6600;
+    }
     20%,24%,55% { text-shadow: none; color: #aa9900; }
   }
 
   @keyframes flicker2 {
-    0%,29%,31%,100% { text-shadow: 0 0 10px #ff4444,0 0 20px #ff0000; }
+    0%,29%,31%,100% { text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000; }
     30% { text-shadow: none; }
   }
 
@@ -113,7 +81,7 @@
 
   .reg-box h2 {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.4rem,5vw,2rem);
+    font-size: clamp(1.4rem, 5vw, 2rem);
     color: #FFD700; text-align: center;
     margin-bottom: 20px; letter-spacing: 3px;
   }
@@ -197,46 +165,35 @@
     border-radius: 20px; padding: 5px 11px; color: #FFD700;
     font-size: clamp(0.68rem, 2.5vw, 0.85rem);
     display: flex; align-items: center; gap: 6px;
-    white-space: nowrap; flex-shrink: 1; min-width: 0; overflow: hidden;
+    flex-shrink: 1; min-width: 0; overflow: hidden;
   }
 
   .user-name-text {
     overflow: hidden; text-overflow: ellipsis;
-    white-space: nowrap; max-width: 85px;
+    white-space: nowrap; max-width: 80px;
   }
 
   .sticker-count-badge {
     background: #FFD700; color: #1a0a00; border-radius: 50%;
     width: 26px; height: 26px; min-width: 26px;
     display: flex; align-items: center; justify-content: center;
-    font-weight: bold; font-size: 0.85rem; font-family: 'Bebas Neue', cursive;
-  }
-
-  /* Online indicator */
-  .online-dot {
-    width: 8px; height: 8px; min-width: 8px;
-    background: #00FF88; border-radius: 50%;
-    animation: blink 2s ease-in-out infinite;
-  }
-
-  @keyframes blink {
-    0%,100% { opacity: 1; box-shadow: 0 0 5px #00FF88; }
-    50% { opacity: 0.4; box-shadow: none; }
+    font-weight: bold; font-size: 0.85rem;
+    font-family: 'Bebas Neue', cursive;
   }
 
   .header-bottom {
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 7px;
   }
 
   .hdr-btn {
-    flex: 1; border: none; border-radius: 20px;
-    padding: 11px 10px;
+    flex: 1; border: none; border-radius: 18px;
+    padding: 12px 8px;
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(0.85rem, 3.2vw, 1rem);
+    font-size: clamp(0.82rem, 3vw, 1rem);
     letter-spacing: 1px; cursor: pointer;
     touch-action: manipulation; -webkit-appearance: none;
     text-align: center; transition: all 0.15s;
-    white-space: nowrap;
+    white-space: nowrap; font-weight: normal;
   }
 
   .hdr-btn:active { transform: translateY(2px); }
@@ -245,22 +202,19 @@
     background: linear-gradient(145deg, #FFD700, #FF8C00);
     color: #1a0a00; box-shadow: 0 3px 0 #8B6000;
   }
-
   .btn-prizes:active { box-shadow: 0 1px 0 #8B6000; }
 
   .btn-admin {
     background: linear-gradient(145deg, #00FFFF, #0088aa);
     color: #000; box-shadow: 0 3px 0 #005566;
   }
-
   .btn-admin:active { box-shadow: 0 1px 0 #005566; }
 
   .btn-logout {
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.4);
     border: 2px solid rgba(255,215,0,0.6) !important;
-    color: #FFD700; box-shadow: none;
+    color: #FFD700;
   }
-
   .btn-logout:active { background: rgba(255,215,0,0.15); }
 
   /* STICKER BAR */
@@ -307,7 +261,7 @@
 
   .section-title {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(1.5rem,6vw,2rem);
+    font-size: clamp(1.5rem, 6vw, 2rem);
     color: #FFD700; letter-spacing: 4px;
     text-align: center; margin-bottom: 4px;
     text-shadow: 2px 2px 0 #CC0000;
@@ -316,7 +270,7 @@
   .section-subtitle {
     font-family: 'Special Elite', cursive;
     color: #FF6600; text-align: center;
-    margin-bottom: 18px; font-size: clamp(0.8rem,3vw,1rem);
+    margin-bottom: 18px; font-size: clamp(0.8rem, 3vw, 1rem);
   }
 
   /* STICKER CARDS */
@@ -365,10 +319,7 @@
     color: rgba(255,215,0,0.6); margin-top: 5px; display: block;
   }
 
-  .slide-arrow {
-    display: inline-block;
-    animation: slideAnim 1s ease-in-out infinite;
-  }
+  .slide-arrow { display: inline-block; animation: slideAnim 1s ease-in-out infinite; }
 
   @keyframes slideAnim {
     0% { transform: translateX(-4px); opacity: 0.5; }
@@ -409,6 +360,11 @@
     text-shadow: 0 0 20px rgba(255,215,0,0.5);
   }
 
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(0.97); }
+  }
+
   .swipe-sub {
     font-family: 'Special Elite', cursive; color: #FF6600;
     font-size: clamp(0.9rem, 4vw, 1.2rem); margin-top: 10px; text-align: center;
@@ -442,7 +398,6 @@
     padding: 14px 35px; color: rgba(255,215,0,0.7);
     font-family: 'Special Elite', cursive; cursor: pointer;
     font-size: 1rem; touch-action: manipulation; -webkit-appearance: none;
-    transition: all 0.2s;
   }
 
   .swipe-cancel:active { border-color: #FFD700; color: #FFD700; }
@@ -507,25 +462,25 @@
     100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
   }
 
-  /* ===== BOTTOM SHEET BASE ===== */
-  .bottom-sheet-overlay {
+  /* ===== BOTTOM SHEETS ===== */
+  .sheet-overlay {
     position: fixed; inset: 0; z-index: 7000; display: none;
     align-items: flex-end; justify-content: center;
     background: rgba(0,0,0,0.88);
     backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
   }
 
-  .bottom-sheet {
+  .sheet-box {
     width: 100%; max-width: 700px;
     max-height: 90vh; overflow-y: auto;
     border-radius: 24px 24px 0 0;
-    padding: 0 0 30px 0;
+    padding-bottom: 30px;
     animation: slideUp 0.35s cubic-bezier(0.175,0.885,0.32,1.275);
     -webkit-overflow-scrolling: touch;
   }
 
-  .bottom-sheet::-webkit-scrollbar { width: 5px; }
-  .bottom-sheet::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.4); border-radius: 3px; }
+  .sheet-box::-webkit-scrollbar { width: 5px; }
+  .sheet-box::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.3); border-radius: 3px; }
 
   @keyframes slideUp {
     0% { transform: translateY(100%); }
@@ -534,10 +489,10 @@
 
   .sheet-drag {
     width: 45px; height: 5px; border-radius: 3px;
-    margin: 14px auto 18px;
+    margin: 14px auto 16px;
   }
 
-  .sheet-header {
+  .sheet-head {
     display: flex; justify-content: space-between;
     align-items: center; padding: 0 18px; margin-bottom: 16px;
   }
@@ -548,19 +503,18 @@
   }
 
   .btn-sheet-close {
-    border-radius: 50%; width: 40px; height: 40px; min-width: 40px;
+    border-radius: 50%; width: 42px; height: 42px; min-width: 42px;
     font-size: 1.1rem; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    touch-action: manipulation; -webkit-appearance: none; border: 2px solid;
-    background: rgba(255,255,255,0.05); transition: background 0.2s;
+    touch-action: manipulation; -webkit-appearance: none;
+    border: 2px solid; background: rgba(255,255,255,0.05);
+    transition: background 0.2s;
   }
 
-  .btn-sheet-close:active { background: rgba(255,255,255,0.15); }
+  .btn-sheet-close:active { background: rgba(255,255,255,0.18); }
 
   /* PRIZES SHEET */
-  #prizesModal { z-index: 7000; }
-
-  #prizesModal .bottom-sheet {
+  #prizesModal .sheet-box {
     background: linear-gradient(145deg, #1a0a00, #2d1200);
     border: 3px solid #FFD700; border-bottom: none;
     box-shadow: 0 -8px 35px rgba(255,215,0,0.2);
@@ -580,28 +534,26 @@
     border-radius: 13px; padding: 13px; text-align: center;
   }
 
-  .stat-number { font-family: 'Bebas Neue', cursive; font-size: clamp(1.8rem,7vw,2.4rem); color: #FFD700; display: block; }
-  .stat-label { font-size: clamp(0.65rem,2.5vw,0.78rem); color: #aa7700; }
+  .stat-number { font-family:'Bebas Neue',cursive; font-size:clamp(1.8rem,7vw,2.4rem); color:#FFD700; display:block; }
+  .stat-label { font-size:clamp(0.65rem,2.5vw,0.78rem); color:#aa7700; }
 
-  .prizes-list { display: flex; flex-direction: column; gap: 10px; padding: 0 18px; }
+  .prizes-list { display:flex; flex-direction:column; gap:10px; padding:0 18px; }
 
   .prize-item {
-    background: rgba(255,255,255,0.04); border: 2px solid rgba(255,215,0,0.16);
-    border-radius: 13px; padding: 13px;
-    display: flex; align-items: center; gap: 13px;
+    background: rgba(255,255,255,0.04); border:2px solid rgba(255,215,0,0.16);
+    border-radius:13px; padding:13px; display:flex; align-items:center; gap:13px;
   }
 
-  .prize-emoji { font-size: clamp(1.5rem,6vw,2rem); flex-shrink: 0; }
-  .prize-info { flex: 1; min-width: 0; }
-  .prize-name { font-family: 'Special Elite', cursive; color: #FFD700; font-size: clamp(0.78rem,3vw,0.92rem); display: block; margin-bottom: 3px; }
-  .prize-time { font-size: clamp(0.62rem,2.3vw,0.72rem); color: #aa7700; }
-
-  .no-prizes { text-align: center; padding: 32px; color: #aa7700; font-size: 0.95rem; line-height: 1.6; }
+  .prize-emoji { font-size:clamp(1.5rem,6vw,2rem); flex-shrink:0; }
+  .prize-info { flex:1; min-width:0; }
+  .prize-name { font-family:'Special Elite',cursive; color:#FFD700; font-size:clamp(0.78rem,3vw,0.92rem); display:block; margin-bottom:3px; }
+  .prize-time { font-size:clamp(0.62rem,2.3vw,0.72rem); color:#aa7700; }
+  .no-prizes { text-align:center; padding:32px; color:#aa7700; font-size:0.95rem; line-height:1.6; }
 
   /* ADMIN SHEET */
   #adminPanel { z-index: 7500; }
 
-  #adminPanel .bottom-sheet {
+  #adminPanel .sheet-box {
     background: linear-gradient(145deg, #0a0a1a, #1a1a2d);
     border: 3px solid #00FFFF; border-bottom: none;
     box-shadow: 0 -8px 35px rgba(0,255,255,0.2);
@@ -611,68 +563,50 @@
   #adminPanel .sheet-title { color: #00FFFF; text-shadow: 0 0 10px rgba(0,255,255,0.4); }
   #adminPanel .btn-sheet-close { border-color: #00FFFF; color: #00FFFF; }
 
-  .admin-desc { color: rgba(0,255,255,0.5); padding: 0 18px; margin-bottom: 14px; font-size: 0.85rem; line-height: 1.5; }
-
-  .admin-users-list { display: flex; flex-direction: column; gap: 11px; padding: 0 18px; }
+  .admin-desc { color:rgba(0,255,255,0.5); padding:0 18px; margin-bottom:14px; font-size:0.85rem; line-height:1.5; }
+  .admin-list { display:flex; flex-direction:column; gap:11px; padding:0 18px; }
 
   .admin-user-item {
-    background: rgba(0,255,255,0.04); border: 2px solid rgba(0,255,255,0.16);
-    border-radius: 14px; padding: 13px;
-    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    background: rgba(0,255,255,0.04); border:2px solid rgba(0,255,255,0.16);
+    border-radius:14px; padding:13px;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
   }
 
-  .admin-user-info { flex: 1; min-width: 0; }
-  .admin-user-name { font-family: 'Special Elite', cursive; color: #00FFFF; font-size: clamp(0.9rem,3.5vw,1.05rem); display: block; margin-bottom: 3px; }
-  .admin-user-stickers { font-size: clamp(0.62rem,2.2vw,0.76rem); color: rgba(0,255,255,0.5); line-height: 1.6; }
+  .admin-user-info { flex:1; min-width:0; }
+  .admin-user-name { font-family:'Special Elite',cursive; color:#00FFFF; font-size:clamp(0.9rem,3.5vw,1.05rem); display:block; margin-bottom:3px; }
+  .admin-user-stats { font-size:clamp(0.62rem,2.2vw,0.76rem); color:rgba(0,255,255,0.5); line-height:1.6; }
 
-  .btn-give-sticker {
+  .btn-give {
     background: linear-gradient(145deg, #00FFFF, #0088aa);
-    border: none; border-radius: 18px; padding: 13px 16px;
-    font-family: 'Bebas Neue', cursive; font-size: clamp(0.85rem,3vw,1rem);
-    letter-spacing: 1px; color: #000; cursor: pointer;
-    box-shadow: 0 3px 0 #005566; touch-action: manipulation;
-    -webkit-appearance: none; white-space: nowrap; flex-shrink: 0;
-    transition: all 0.15s;
+    border:none; border-radius:16px; padding:13px 15px;
+    font-family:'Bebas Neue',cursive; font-size:clamp(0.85rem,3vw,1rem);
+    letter-spacing:1px; color:#000; cursor:pointer;
+    box-shadow:0 3px 0 #005566; touch-action:manipulation;
+    -webkit-appearance:none; white-space:nowrap; flex-shrink:0;
+    transition:all 0.15s;
   }
 
-  .btn-give-sticker:active { transform: translateY(2px); box-shadow: 0 1px 0 #005566; }
-
-  .admin-empty { color: rgba(0,255,255,0.35); text-align: center; padding: 22px; font-size: 0.88rem; }
-
-  /* SYNC INDICATOR */
-  .sync-bar {
-    background: rgba(0,255,136,0.1); border-bottom: 2px solid rgba(0,255,136,0.3);
-    padding: 5px 14px; display: flex; align-items: center; gap: 8px;
-    font-size: 0.72rem; color: rgba(0,255,136,0.7);
-    font-family: 'Special Elite', cursive;
-  }
-
-  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #00FF88; animation: blink 2s infinite; flex-shrink: 0; }
+  .btn-give:active { transform:translateY(2px); box-shadow:0 1px 0 #005566; }
+  .admin-empty { color:rgba(0,255,255,0.35); text-align:center; padding:25px; font-size:0.88rem; }
 
   /* TOAST */
   .toast {
-    position: fixed; bottom: 28px; left: 50%;
-    transform: translateX(-50%) translateY(120px);
+    position:fixed; bottom:28px; left:50%;
+    transform:translateX(-50%) translateY(120px);
     background: linear-gradient(145deg, #1a0a00, #2d1200);
-    border: 2px solid #FFD700; border-radius: 25px;
-    padding: 13px 22px; color: #FFD700;
-    font-family: 'Special Elite', cursive;
-    font-size: clamp(0.82rem,3vw,0.95rem);
-    z-index: 9999; transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-    max-width: 88vw; text-align: center;
+    border:2px solid #FFD700; border-radius:25px;
+    padding:13px 22px; color:#FFD700;
+    font-family:'Special Elite',cursive;
+    font-size:clamp(0.82rem,3vw,0.95rem);
+    z-index:9999; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+    box-shadow:0 8px 25px rgba(0,0,0,0.6);
+    max-width:88vw; text-align:center;
   }
 
-  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.show { transform:translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
-
-<!-- LOADING -->
-<div id="loadingScreen">
-  <div class="loading-pizza">🍕</div>
-  <div class="loading-text">ЗАГРУЗКА...</div>
-</div>
 
 <!-- STARS -->
 <div class="stars-bg" id="starsBg"></div>
@@ -703,18 +637,12 @@
         <div class="logo-sub">✦ ШКОЛЬНАЯ ПИЦЦА ✦</div>
       </div>
       <div class="user-badge">
-        <div class="online-dot"></div>
         👤 <span class="user-name-text" id="headerUsername">Гость</span>
         <div class="sticker-count-badge" id="headerStickerCount">0</div>
       </div>
     </div>
     <div class="header-bottom" id="headerBottom"></div>
   </header>
-
-  <div class="sync-bar">
-    <div class="sync-dot"></div>
-    <span id="syncStatus">Синхронизация в реальном времени...</span>
-  </div>
 
   <div class="sticker-menu-bar">
     <span class="sticker-menu-title">🎴 <span>СТИКЕР</span>ПИЦЦА</span>
@@ -770,10 +698,10 @@
 </div>
 
 <!-- PRIZES MODAL -->
-<div class="bottom-sheet-overlay" id="prizesModal">
-  <div class="bottom-sheet">
+<div class="sheet-overlay" id="prizesModal">
+  <div class="sheet-box">
     <div class="sheet-drag"></div>
-    <div class="sheet-header">
+    <div class="sheet-head">
       <div class="sheet-title">🏆 МОИ ПРИЗЫ</div>
       <button class="btn-sheet-close" onclick="closePrizes()">✕</button>
     </div>
@@ -794,16 +722,16 @@
 </div>
 
 <!-- ADMIN PANEL -->
-<div class="bottom-sheet-overlay" id="adminPanel">
-  <div class="bottom-sheet">
+<div class="sheet-overlay" id="adminPanel">
+  <div class="sheet-box">
     <div class="sheet-drag"></div>
-    <div class="sheet-header">
+    <div class="sheet-head">
       <div class="sheet-title">🔧 ПАНЕЛЬ АДМИНА</div>
       <button class="btn-sheet-close" onclick="closeAdmin()">✕</button>
     </div>
-    <div class="admin-desc">Выдавайте стикеры пользователям в реальном времени 🔄</div>
-    <div class="admin-users-list" id="adminUsersList">
-      <div class="admin-empty">Нет зарегистрированных пользователей</div>
+    <div class="admin-desc">Выдавайте стикеры пользователям 🎴</div>
+    <div class="admin-list" id="adminUsersList">
+      <div class="admin-empty">Нет пользователей</div>
     </div>
   </div>
 </div>
@@ -811,35 +739,14 @@
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- Firebase -->
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-import { getDatabase, ref, set, get, onValue, update, child }
-  from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
-
-// ── Firebase config ──────────────────────────────────────────
-const firebaseConfig = {
-  apiKey: "AIzaSyDemo_ReplaceWithYourKey",
-  authDomain: "pizza-sticker-app.firebaseapp.com",
-  databaseURL: "https://pizza-sticker-app-default-rtdb.firebaseio.com",
-  projectId: "pizza-sticker-app",
-  storageBucket: "pizza-sticker-app.appspot.com",
-  messagingSenderId: "000000000000",
-  appId: "1:000000000000:web:0000000000000000"
-};
-
-// !! ВНИМАНИЕ !!
-// Замените firebaseConfig выше на ваш реальный конфиг из:
-// console.firebase.google.com → ваш проект → Project Settings → Web App
-// Создайте Realtime Database в тестовом режиме
-
-const app = initializeApp(firebaseConfig);
-const db  = getDatabase(app);
-
-// ── Constants ────────────────────────────────────────────────
-const ADMIN_NAME = 'Vladimir';
-const ADMIN_PASS = '67timyr';
-const SESSION_KEY = 'pizzaSession_v4';
+<script>
+// ============================================================
+// CONSTANTS
+// ============================================================
+const ADMIN_NAME  = 'Vladimir';
+const ADMIN_PASS  = '67timyr';
+const DB_KEY      = 'pizzaDB_v5';
+const SESSION_KEY = 'pizzaSESSION_v5';
 
 const PRIZES = [
   { id:'nothing',    name:'Ничего не выиграл',                     emoji:'😞', weight:99 },
@@ -850,224 +757,247 @@ const PRIZES = [
   { id:'tv',         name:'Телевизор с Тимуром Ассистентом',       emoji:'📺', weight:33 },
 ];
 
-// ── State ────────────────────────────────────────────────────
-let currentUser  = null;
-let isAdmin      = false;
-let userData     = null;
-let unsubscribe  = null;   // firebase listener
-let adminUnsub   = null;   // admin listener
+// ============================================================
+// DATABASE (localStorage)
+// ============================================================
+function dbGet() {
+  try { return JSON.parse(localStorage.getItem(DB_KEY) || '{}'); } catch(e) { return {}; }
+}
 
-// ── Stars ────────────────────────────────────────────────────
-(function() {
-  const c = document.getElementById('starsBg');
-  const icons = ['⭐','🌟','✨','★'];
-  for (let i = 0; i < 18; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    s.textContent = icons[i % icons.length];
-    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${0.7+Math.random()*0.7}rem;opacity:${0.12+Math.random()*0.2};animation-delay:${Math.random()*3}s;animation-duration:${1.5+Math.random()*2}s;`;
-    c.appendChild(s);
+function dbSet(data) {
+  try { localStorage.setItem(DB_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function dbGetUser(name) {
+  return dbGet()[name] || null;
+}
+
+function dbSetUser(name, data) {
+  const db = dbGet();
+  db[name] = data;
+  dbSet(db);
+  // Broadcast to other tabs/windows
+  try {
+    bc.postMessage({ type: 'UPDATE', user: name });
+  } catch(e) {}
+}
+
+function dbCreateUser(name, pass) {
+  const db = dbGet();
+  if (!db[name]) {
+    db[name] = { password: pass, stickers: 0, prizes: [], stickersOpened: 0 };
+    dbSet(db);
   }
-})();
+  return db[name];
+}
 
-// ── Helpers ──────────────────────────────────────────────────
-function userRef(name)   { return ref(db, 'users/' + name); }
-function usersRef()      { return ref(db, 'users'); }
-
-function saveSession(name, pass) {
+// ============================================================
+// SESSION
+// ============================================================
+function sessionSave(name, pass) {
   try { localStorage.setItem(SESSION_KEY, JSON.stringify({ name, pass })); } catch(e) {}
 }
 
-function loadSession() {
+function sessionLoad() {
   try { return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch(e) { return null; }
 }
 
-function clearSession() {
+function sessionClear() {
   try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
 }
 
-// ── Init ─────────────────────────────────────────────────────
-async function init() {
-  const session = loadSession();
-  if (session) {
-    // Auto-login
-    const ok = await tryLogin(session.name, session.pass, true);
-    if (!ok) showReg();
-  } else {
-    showReg();
-  }
+// ============================================================
+// BROADCAST CHANNEL (sync between tabs)
+// ============================================================
+let bc;
+try {
+  bc = new BroadcastChannel('pizza_channel');
+  bc.onmessage = function(e) {
+    if (!currentUser) return;
+    if (e.data.type === 'UPDATE') {
+      // Reload current user data from storage
+      const fresh = dbGetUser(currentUser);
+      if (!fresh) return;
+      const prev = currentData ? currentData.stickers : 0;
+      currentData = fresh;
+      if (fresh.stickers > prev) {
+        showToast('🎴 Вам выдали новый стикер!');
+      }
+      updateUI();
+      // If admin panel open — refresh list
+      if (document.getElementById('adminPanel').style.display === 'flex') {
+        renderAdminList();
+      }
+    }
+  };
+} catch(e) {
+  bc = { postMessage: () => {} };
 }
 
-function showReg() {
-  document.getElementById('loadingScreen').style.display = 'none';
+// ============================================================
+// STATE
+// ============================================================
+let currentUser = null;
+let currentData = null;
+let isAdmin     = false;
+
+// ============================================================
+// STARS
+// ============================================================
+(function() {
+  const c = document.getElementById('starsBg');
+  ['⭐','🌟','✨','★','⭐','🌟','✨','★','⭐','🌟','✨','★','⭐','🌟','✨','★','⭐','🌟'].forEach((icon, i) => {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = icon;
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${0.7+Math.random()*0.7}rem;opacity:${0.12+Math.random()*0.2};animation-delay:${Math.random()*3}s;animation-duration:${1.5+Math.random()*2}s;`;
+    c.appendChild(s);
+  });
+})();
+
+// ============================================================
+// AUTO LOGIN ON PAGE LOAD
+// ============================================================
+window.addEventListener('DOMContentLoaded', function() {
+  const session = sessionLoad();
+  if (session && session.name && session.pass) {
+    const ok = tryLogin(session.name, session.pass);
+    if (ok) return;
+  }
+  // Show reg
   document.getElementById('regOverlay').style.display = 'flex';
   document.getElementById('starsBg').style.display = 'block';
-}
+});
 
-// ── Login ────────────────────────────────────────────────────
-document.getElementById('regName').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('regPass').focus(); });
-document.getElementById('regPass').addEventListener('keydown', e => { if(e.key==='Enter') handleLogin(); });
+// ============================================================
+// LOGIN
+// ============================================================
+document.getElementById('regName').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('regPass').focus();
+});
+document.getElementById('regPass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') handleLogin();
+});
 
-async function handleLogin() {
+function handleLogin() {
   const name = document.getElementById('regName').value.trim();
   const pass = document.getElementById('regPass').value.trim();
   const err  = document.getElementById('errorMsg');
 
   if (!name || !pass) { err.textContent = '⚠️ Введите имя и пароль!'; return; }
 
-  err.textContent = '⏳ Подключение...';
-  const ok = await tryLogin(name, pass, false);
-  if (!ok) err.textContent = '❌ Неверный пароль!';
-}
-
-window.handleLogin = handleLogin;
-
-async function tryLogin(name, pass, silent) {
-  const adminMode = (name === ADMIN_NAME && pass === ADMIN_PASS);
-
-  try {
-    const snap = await get(userRef(name));
-    if (snap.exists()) {
-      const data = snap.val();
-      if (data.password !== pass) return false;
-    } else {
-      // New user — create
-      await set(userRef(name), {
-        password: pass,
-        stickers: 0,
-        prizes: [],
-        stickersOpened: 0,
-      });
-    }
-  } catch(e) {
-    if (!silent) document.getElementById('errorMsg').textContent = '⚠️ Ошибка подключения. Проверьте интернет.';
-    // Fallback: offline mode via localStorage
-    return tryOfflineLogin(name, pass);
+  const ok = tryLogin(name, pass);
+  if (!ok) {
+    err.textContent = '❌ Неверный пароль!';
   }
-
-  currentUser = name;
-  isAdmin = adminMode;
-  saveSession(name, pass);
-  enterApp();
-  return true;
 }
 
-// Offline fallback
-function tryOfflineLogin(name, pass) {
+function tryLogin(name, pass) {
   const adminMode = (name === ADMIN_NAME && pass === ADMIN_PASS);
-  let local = {};
-  try { local = JSON.parse(localStorage.getItem('pizzaOffline_v4') || '{}'); } catch(e) {}
+  const existing  = dbGetUser(name);
 
-  if (local[name]) {
-    if (local[name].password !== pass) return false;
+  if (existing) {
+    if (existing.password !== pass) return false;
+    currentData = existing;
   } else {
-    local[name] = { password: pass, stickers: 0, prizes: [], stickersOpened: 0 };
-    try { localStorage.setItem('pizzaOffline_v4', JSON.stringify(local)); } catch(e) {}
+    currentData = dbCreateUser(name, pass);
   }
 
   currentUser = name;
-  isAdmin = adminMode;
-  userData = local[name];
-  saveSession(name, pass);
+  isAdmin     = adminMode;
+  sessionSave(name, pass);
   enterApp();
-  showToast('⚠️ Автономный режим (нет интернета)');
   return true;
 }
 
-// ── Enter App ────────────────────────────────────────────────
 function enterApp() {
-  document.getElementById('loadingScreen').style.display = 'none';
-  document.getElementById('regOverlay').style.display = 'none';
-  document.getElementById('starsBg').style.display = 'none';
-  document.getElementById('mainApp').style.display = 'flex';
-  document.getElementById('errorMsg').textContent = '';
+  document.getElementById('regOverlay').style.display  = 'none';
+  document.getElementById('starsBg').style.display     = 'none';
+  document.getElementById('mainApp').style.display     = 'flex';
+  document.getElementById('errorMsg').textContent      = '';
   document.getElementById('headerUsername').textContent = currentUser;
-
   buildHeaderButtons();
-  subscribeToUser();
-  updateSyncStatus('🟢 Онлайн — данные синхронизируются');
+  updateUI();
+  startPolling();
 }
 
+function handleLogout() {
+  stopPolling();
+  currentUser = null;
+  currentData = null;
+  isAdmin     = false;
+  sessionClear();
+  closePrizes();
+  closeAdmin();
+  closeWin();
+  if (document.getElementById('swipeOverlay').style.display !== 'none') cancelSwipe();
+  document.getElementById('mainApp').style.display    = 'none';
+  document.getElementById('regOverlay').style.display = 'flex';
+  document.getElementById('starsBg').style.display    = 'block';
+  document.getElementById('regName').value = '';
+  document.getElementById('regPass').value = '';
+}
+
+// ============================================================
+// HEADER BUTTONS
+// ============================================================
 function buildHeaderButtons() {
   const hb = document.getElementById('headerBottom');
   hb.innerHTML = '';
 
   const btnP = document.createElement('button');
   btnP.className = 'hdr-btn btn-prizes';
-  btnP.innerHTML = '🏆 ПРИЗЫ';
+  btnP.textContent = '🏆 ПРИЗЫ';
   btnP.onclick = openPrizes;
   hb.appendChild(btnP);
 
   if (isAdmin) {
     const btnA = document.createElement('button');
     btnA.className = 'hdr-btn btn-admin';
-    btnA.innerHTML = '🔧 АДМИН';
+    btnA.textContent = '🔧 АДМИН';
     btnA.onclick = openAdmin;
     hb.appendChild(btnA);
   }
 
   const btnL = document.createElement('button');
   btnL.className = 'hdr-btn btn-logout';
-  btnL.innerHTML = '↩ ВЫЙТИ';
+  btnL.textContent = '↩ ВЫЙТИ';
   btnL.onclick = handleLogout;
   hb.appendChild(btnL);
 }
 
-// ── Firebase Listener ────────────────────────────────────────
-function subscribeToUser() {
-  if (unsubscribe) unsubscribe();
-  const r = userRef(currentUser);
-  unsubscribe = onValue(r, snap => {
-    if (!snap.exists()) return;
-    const fresh = snap.val();
-    const prevStickers = userData ? userData.stickers : null;
-    userData = fresh;
+// ============================================================
+// POLLING (check for updates every 1.5s)
+// ============================================================
+let pollInterval = null;
+let lastStickers = 0;
 
-    // Notify if stickers increased (someone gave us one)
-    if (prevStickers !== null && fresh.stickers > prevStickers) {
-      const diff = fresh.stickers - prevStickers;
-      showToast(`🎴 Вы получили ${diff} новый стикер!`);
+function startPolling() {
+  lastStickers = currentData ? currentData.stickers : 0;
+  pollInterval = setInterval(() => {
+    if (!currentUser) return;
+    const fresh = dbGetUser(currentUser);
+    if (!fresh) return;
+    if (fresh.stickers !== (currentData ? currentData.stickers : 0)) {
+      const diff = fresh.stickers - (currentData ? currentData.stickers : 0);
+      currentData = fresh;
+      updateUI();
+      if (diff > 0) showToast(`🎴 Вам выдали ${diff} стикер!`);
     }
-
-    updateUI();
-  }, err => {
-    updateSyncStatus('🔴 Нет соединения — работаю офлайн');
-  });
+  }, 1500);
 }
 
-function subscribeToAllUsers(callback) {
-  if (adminUnsub) adminUnsub();
-  adminUnsub = onValue(usersRef(), snap => {
-    callback(snap.val() || {});
-  });
+function stopPolling() {
+  if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
 }
 
-function updateSyncStatus(msg) {
-  document.getElementById('syncStatus').textContent = msg;
-}
-
-// ── Logout ───────────────────────────────────────────────────
-function handleLogout() {
-  if (unsubscribe)  { unsubscribe(); unsubscribe = null; }
-  if (adminUnsub)   { adminUnsub(); adminUnsub = null; }
-  currentUser = null; isAdmin = false; userData = null;
-  clearSession();
-  closePrizes(); closeAdmin(); closeWin();
-  if (document.getElementById('swipeOverlay').style.display !== 'none') cancelSwipe();
-  document.getElementById('mainApp').style.display = 'none';
-  document.getElementById('regOverlay').style.display = 'flex';
-  document.getElementById('starsBg').style.display = 'block';
-  document.getElementById('regName').value = '';
-  document.getElementById('regPass').value = '';
-}
-
-window.handleLogout = handleLogout;
-
-// ── UI ───────────────────────────────────────────────────────
+// ============================================================
+// UI
+// ============================================================
 function updateUI() {
-  if (!userData) return;
-  const count = userData.stickers || 0;
-  document.getElementById('availableStickers').textContent = count;
+  if (!currentData) return;
+  const count = currentData.stickers || 0;
+  document.getElementById('availableStickers').textContent  = count;
   document.getElementById('headerStickerCount').textContent = count;
   renderStickers(count);
 }
@@ -1076,10 +1006,8 @@ function renderStickers(count) {
   const grid  = document.getElementById('stickersGrid');
   const noMsg = document.getElementById('noStickersMsg');
   grid.innerHTML = '';
-
   if (count === 0) { noMsg.style.display = 'block'; return; }
   noMsg.style.display = 'none';
-
   for (let i = 0; i < count; i++) {
     const card = document.createElement('div');
     card.className = 'sticker-card';
@@ -1088,28 +1016,37 @@ function renderStickers(count) {
       <span class="sticker-number">СТИКЕР #${i+1}</span>
       <span class="sticker-hint"><span class="slide-arrow">←→</span> проведи!</span>
     `;
-    card.addEventListener('click', () => openSwipeOverlay());
-    card.addEventListener('touchend', e => { e.preventDefault(); openSwipeOverlay(); }, { passive: false });
+    card.addEventListener('click', openSwipeOverlay);
+    card.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      openSwipeOverlay();
+    }, { passive: false });
     grid.appendChild(card);
   }
 }
 
-// ── Swipe ────────────────────────────────────────────────────
-let swipeActive = false, swipeStartX = null, swipeStartY = null, swipeDone = false;
+// ============================================================
+// SWIPE
+// ============================================================
+let swipeActive = false;
+let swipeStartX = null;
+let swipeStartY = null;
+let swipeDone   = false;
 
 function openSwipeOverlay() {
-  if (!userData || (userData.stickers || 0) === 0) return;
-  swipeActive = true; swipeDone = false; swipeStartX = null; swipeStartY = null;
+  if (!currentData || (currentData.stickers || 0) === 0) return;
+  swipeActive = true; swipeDone = false;
+  swipeStartX = null; swipeStartY = null;
   document.getElementById('swipeProgress').style.width = '0%';
   document.getElementById('swipeOverlay').style.display = 'flex';
 }
 
-window.cancelSwipe = function() {
+function cancelSwipe() {
   swipeActive = false; swipeStartX = null;
   document.getElementById('swipeOverlay').style.display = 'none';
-};
+}
 
-function threshold() { return window.innerWidth * 0.7; }
+function thr() { return window.innerWidth * 0.70; }
 
 const swipeEl = document.getElementById('swipeOverlay');
 
@@ -1124,9 +1061,9 @@ swipeEl.addEventListener('touchmove', e => {
   e.preventDefault();
   const dx = e.touches[0].clientX - swipeStartX;
   const dy = Math.abs(e.touches[0].clientY - swipeStartY);
-  if (dy > 55 && Math.abs(dx) < dy) return;
+  if (dy > 60 && Math.abs(dx) < dy) return;
   if (dx < 0) { document.getElementById('swipeProgress').style.width = '0%'; return; }
-  const pct = Math.min((dx / threshold()) * 100, 100);
+  const pct = Math.min((dx / thr()) * 100, 100);
   document.getElementById('swipeProgress').style.width = pct + '%';
   if (pct >= 100) { swipeDone = true; onSwipeDone(); }
 }, { passive: false });
@@ -1137,22 +1074,25 @@ swipeEl.addEventListener('touchend', () => {
   if (pct < 100) { document.getElementById('swipeProgress').style.width = '0%'; swipeStartX = null; }
 }, { passive: true });
 
-swipeEl.addEventListener('mousedown', e => { if (!swipeActive || swipeDone) return; swipeStartX = e.clientX; });
+swipeEl.addEventListener('mousedown', e => {
+  if (!swipeActive || swipeDone) return;
+  swipeStartX = e.clientX;
+});
+
 document.addEventListener('mousemove', e => {
   if (!swipeActive || swipeStartX === null || swipeDone) return;
   const dx = e.clientX - swipeStartX;
   if (dx < 0) { document.getElementById('swipeProgress').style.width = '0%'; return; }
-  const pct = Math.min((dx / threshold()) * 100, 100);
+  const pct = Math.min((dx / thr()) * 100, 100);
   document.getElementById('swipeProgress').style.width = pct + '%';
   if (pct >= 100) { swipeDone = true; onSwipeDone(); }
 });
+
 document.addEventListener('mouseup', () => {
   if (!swipeActive || swipeDone) return;
   const pct = parseFloat(document.getElementById('swipeProgress').style.width) || 0;
   if (pct < 100) { document.getElementById('swipeProgress').style.width = '0%'; swipeStartX = null; }
 });
-
-swipeEl.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
 
 function onSwipeDone() {
   setTimeout(() => {
@@ -1161,65 +1101,51 @@ function onSwipeDone() {
   }, 200);
 }
 
-// ── Prize ────────────────────────────────────────────────────
+// ============================================================
+// PRIZE
+// ============================================================
 function rollPrize() {
-  const total = PRIZES.reduce((a, p) => a + p.weight, 0);
+  const total = PRIZES.reduce((a,p) => a + p.weight, 0);
   let r = Math.random() * total;
   for (const p of PRIZES) { if (r < p.weight) return p; r -= p.weight; }
   return PRIZES[0];
 }
 
-async function revealPrize() {
-  if (!userData || (userData.stickers || 0) === 0) return;
+function revealPrize() {
+  if (!currentData || (currentData.stickers || 0) === 0) return;
   const prize = rollPrize();
-
-  const newStickers = (userData.stickers || 1) - 1;
-  const newOpened   = (userData.stickersOpened || 0) + 1;
-  const prizeEntry  = { prizeName: prize.name, prizeEmoji: prize.emoji, time: new Date().toLocaleString('ru-RU'), timestamp: Date.now() };
-  const newPrizes   = [...(userData.prizes || []), prizeEntry];
-
-  // Optimistic update
-  userData.stickers = newStickers;
-  userData.stickersOpened = newOpened;
-  userData.prizes = newPrizes;
+  currentData.stickers       = (currentData.stickers || 1) - 1;
+  currentData.stickersOpened = (currentData.stickersOpened || 0) + 1;
+  currentData.prizes         = currentData.prizes || [];
+  currentData.prizes.push({
+    prizeName: prize.name, prizeEmoji: prize.emoji,
+    time: new Date().toLocaleString('ru-RU'), timestamp: Date.now()
+  });
+  dbSetUser(currentUser, currentData);
   updateUI();
   showWin(prize);
-
-  // Sync to Firebase
-  try {
-    await update(userRef(currentUser), {
-      stickers: newStickers,
-      stickersOpened: newOpened,
-      prizes: newPrizes,
-    });
-  } catch(e) {
-    // Save offline
-    try {
-      const local = JSON.parse(localStorage.getItem('pizzaOffline_v4') || '{}');
-      local[currentUser] = userData;
-      localStorage.setItem('pizzaOffline_v4', JSON.stringify(local));
-    } catch(e2) {}
-  }
 }
 
 function showWin(prize) {
-  document.getElementById('winEmoji').textContent    = prize.emoji;
+  document.getElementById('winEmoji').textContent     = prize.emoji;
   document.getElementById('winPrizeText').textContent = prize.name;
   document.getElementById('winOverlay').style.display = 'flex';
   if (prize.id !== 'nothing') createConfetti();
 }
 
-window.closeWin = function() {
+function closeWin() {
   document.getElementById('winOverlay').style.display = 'none';
   document.getElementById('confettiContainer').innerHTML = '';
-};
+}
 
-// ── Confetti ─────────────────────────────────────────────────
+// ============================================================
+// CONFETTI
+// ============================================================
 function createConfetti() {
   const c = document.getElementById('confettiContainer');
   c.innerHTML = '';
   const colors = ['#FFD700','#FF6600','#CC0000','#FF4444','#ffffff','#FF69B4','#00FF88'];
-  for (let i = 0; i < 65; i++) {
+  for (let i = 0; i < 70; i++) {
     const p = document.createElement('div');
     p.className = 'confetti-piece';
     const sz = 7 + Math.random() * 10;
@@ -1228,12 +1154,15 @@ function createConfetti() {
   }
 }
 
-// ── Prizes Modal ─────────────────────────────────────────────
-window.openPrizes = function() {
-  if (!userData) return;
-  const prizes = userData.prizes || [];
+// ============================================================
+// PRIZES MODAL
+// ============================================================
+function openPrizes() {
+  // Reload fresh data
+  currentData = dbGetUser(currentUser) || currentData;
+  const prizes = currentData.prizes || [];
   document.getElementById('totalPrizesCount').textContent    = prizes.length;
-  document.getElementById('totalStickersOpened').textContent = userData.stickersOpened || 0;
+  document.getElementById('totalStickersOpened').textContent = currentData.stickersOpened || 0;
   const list = document.getElementById('prizesList');
   if (prizes.length === 0) {
     list.innerHTML = '<div class="no-prizes">🎴 Ещё нет выигрышей<br><small>Открывайте стикеры!</small></div>';
@@ -1248,63 +1177,74 @@ window.openPrizes = function() {
       </div>`).join('');
   }
   document.getElementById('prizesModal').style.display = 'flex';
-};
+}
 
-window.closePrizes = function() { document.getElementById('prizesModal').style.display = 'none'; };
+function closePrizes() {
+  document.getElementById('prizesModal').style.display = 'none';
+}
 
-document.getElementById('prizesModal').addEventListener('click', function(e) { if(e.target===this) closePrizes(); });
+document.getElementById('prizesModal').addEventListener('click', function(e) {
+  if (e.target === this) closePrizes();
+});
 
-// ── Admin Panel ──────────────────────────────────────────────
-window.openAdmin = function() {
+// ============================================================
+// ADMIN PANEL
+// ============================================================
+function openAdmin() {
   if (!isAdmin) return;
+  renderAdminList();
   document.getElementById('adminPanel').style.display = 'flex';
-  subscribeToAllUsers(renderAdminUsers);
-};
+}
 
-window.closeAdmin = function() {
+function closeAdmin() {
   document.getElementById('adminPanel').style.display = 'none';
-  if (adminUnsub) { adminUnsub(); adminUnsub = null; }
-};
+}
 
-document.getElementById('adminPanel').addEventListener('click', function(e) { if(e.target===this) closeAdmin(); });
+document.getElementById('adminPanel').addEventListener('click', function(e) {
+  if (e.target === this) closeAdmin();
+});
 
-function renderAdminUsers(users) {
+function renderAdminList() {
+  const db    = dbGet();
   const list  = document.getElementById('adminUsersList');
-  const names = Object.keys(users).filter(n => n !== ADMIN_NAME);
+  const names = Object.keys(db).filter(n => n !== ADMIN_NAME);
+
   if (names.length === 0) {
     list.innerHTML = '<div class="admin-empty">Нет зарегистрированных пользователей</div>';
     return;
   }
+
   list.innerHTML = names.map(name => {
-    const d = users[name];
+    const d = db[name];
     return `
       <div class="admin-user-item">
         <div class="admin-user-info">
           <span class="admin-user-name">👤 ${name}</span>
-          <span class="admin-user-stickers">
+          <span class="admin-user-stats">
             🎴 Стикеров: <b style="color:#00FFFF">${d.stickers||0}</b> &nbsp;
             🏆 Призов: <b style="color:#FFD700">${(d.prizes||[]).length}</b> &nbsp;
             📊 Открыто: <b style="color:#FF6600">${d.stickersOpened||0}</b>
           </span>
         </div>
-        <button class="btn-give-sticker" onclick="giveSticker('${name}')">+1 🎴</button>
+        <button class="btn-give" onclick="giveSticker('${name}')">+1 🎴</button>
       </div>`;
   }).join('');
 }
 
-window.giveSticker = async function(username) {
-  try {
-    const snap = await get(userRef(username));
-    if (!snap.exists()) return;
-    const d = snap.val();
-    await update(userRef(username), { stickers: (d.stickers || 0) + 1 });
-    showToast(`✅ ${username} получил +1 стикер!`);
-  } catch(e) {
-    showToast('❌ Ошибка соединения');
-  }
-};
+function giveSticker(username) {
+  const db = dbGet();
+  if (!db[username]) return;
+  db[username].stickers = (db[username].stickers || 0) + 1;
+  dbSet(db);
+  // Broadcast
+  try { bc.postMessage({ type: 'UPDATE', user: username }); } catch(e) {}
+  renderAdminList();
+  showToast(`✅ ${username} получил +1 стикер!`);
+}
 
-// ── Toast ────────────────────────────────────────────────────
+// ============================================================
+// TOAST
+// ============================================================
 let toastTimer;
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -1314,8 +1254,26 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
 
-// ── Start ────────────────────────────────────────────────────
-init();
+// ============================================================
+// STORAGE EVENT (sync between different browser tabs)
+// ============================================================
+window.addEventListener('storage', function(e) {
+  if (e.key !== DB_KEY || !currentUser) return;
+  const fresh = dbGetUser(currentUser);
+  if (!fresh || !currentData) return;
+  if (fresh.stickers > currentData.stickers) {
+    const diff = fresh.stickers - currentData.stickers;
+    currentData = fresh;
+    updateUI();
+    showToast(`🎴 Вам выдали ${diff} стикер!`);
+  } else {
+    currentData = fresh;
+    updateUI();
+  }
+  if (document.getElementById('adminPanel').style.display === 'flex') {
+    renderAdminList();
+  }
+});
 </script>
 </body>
 </html>
